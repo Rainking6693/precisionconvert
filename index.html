@@ -55,6 +55,7 @@
     <link rel="dns-prefetch" href="//www.googletagmanager.com">
     <link rel="preconnect" href="https://js.stripe.com">
     <link rel="dns-prefetch" href="//js.stripe.com">
+    <script src="https://js.stripe.com/v3/"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#2563eb">
     <meta name="color-scheme" content="light dark">
@@ -1429,7 +1430,7 @@
                     </span>
                 </a>
                 <div class="nav-controls">
-                    <button class="btn btn-primary" id="upgradeBtn" onclick="window.location.href='https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02'" style="margin-right: 1rem;">
+                    <button class="btn btn-primary" id="upgradeBtn" onclick="showPaymentModal()" style="margin-right: 1rem;">
                         👑 Upgrade to PROFESSIONAL
                     </button>
                     <div class="theme-selector-container premium-feature">
@@ -1462,7 +1463,7 @@
         <div class="upgrade-banner">
             <h3>🚀 Upgrade to PROFESSIONAL for Specialized Units</h3>
             <p>Get professional cooking, scientific, and historical unit categories - $4.99/month</p>
-            <button class="btn btn-primary" style="margin-top: 0.5rem;" onclick="window.location.href='https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02'">Learn More</button>
+            <button class="btn btn-primary" style="margin-top: 0.5rem;" onclick="showPaymentModal()">Learn More</button>
         </div>
 
         <!-- Converter Section -->
@@ -1533,7 +1534,7 @@
                         <option value="12" class="premium-option">12 places 💎 PREMIUM</option>
                         <option value="15" class="premium-option">15 places 💎 PREMIUM</option>
                     </select>
-                    <button class="btn btn-primary" id="unlockPrecisionBtn" onclick="window.location.href='https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02'" style="margin-left: 0.5rem;">🔓 Unlock Pro Precision</button>
+                    <button class="btn btn-primary" id="unlockPrecisionBtn" onclick="showPaymentModal()" style="margin-left: 0.5rem;">🔓 Unlock Pro Precision</button>
                     
                     <label title="Display all results in scientific notation (e.g., 1.23e+6 instead of 1230000)" style="position: relative;">
                         <input type="checkbox" id="scientificNotation"> 🔬 Scientific Notation (e.g., 1.23e+6)
@@ -2014,7 +2015,7 @@
                     <button class="btn" style="background: white; color: var(--primary-color); border: none; padding: 1rem 2rem;" onclick="scrollToConverter()">
                         📏 Try Converter
                     </button>
-                    <button class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white; padding: 1rem 2rem;" onclick="window.location.href='https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02'">
+                    <button class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white; padding: 1rem 2rem;" onclick="showPaymentModal()">
                         🚀 Upgrade to Pro
                     </button>
                 </div>
@@ -3129,7 +3130,7 @@
                     <span class="feature-icon">📊</span>
                     <h3>Batch Converter <span style="background: var(--primary-color); color: white; padding: 0.2rem 0.5rem; border-radius: 0.25rem; font-size: 0.7rem;">PRO</span></h3>
                     <p>Convert multiple values at once with CSV import/export</p>
-                    <button class="btn btn-primary" style="margin-top: 1rem;" onclick="window.location.href='https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02'">Upgrade to Access</button>
+                    <button class="btn btn-primary" style="margin-top: 1rem;" onclick="showPaymentModal()">Upgrade to Access</button>
                 `;
                 batchCard.style.opacity = '0.7';
             }
@@ -3295,6 +3296,7 @@
             updateHistory();
             updateFavorites();
             setupEventListeners();
+            initializeStripe(); // Initialize Stripe integration
             updateThemeOptions(); // Initialize theme options based on premium status
             updatePremiumIndicators(); // Initialize premium indicators
             checkSubscriptionStatus();
@@ -3352,7 +3354,11 @@
                     setTimeout(() => showEmailModal(), 3000);
                 } else if (conversionCount >= 10) {
                     setTimeout(() => {
-                        window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+                        if (stripe) {
+                            createCheckoutSession();
+                        } else {
+                            window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+                        }
                     }, 5000);
                 }
             }
@@ -3597,7 +3603,11 @@
                 
                 if (precisionAttempts >= 3) {
                     setTimeout(() => {
-                        window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+                        if (stripe) {
+                            createCheckoutSession();
+                        } else {
+                            window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+                        }
                     }, 1000);
                 }
             }
@@ -4179,32 +4189,173 @@
             analytics.track('install_prompt_dismissed');
         }
         
+        // Initialize Stripe
+        let stripe;
+        
+        // Initialize Stripe with publishable key from environment
+        function initializeStripe() {
+            // Environment-based key selection
+            let publishableKey;
+            
+            // For local development, use test keys
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                publishableKey = 'pk_test_51RyJPcPQdMywmVkHaOfoOFZLAhcWELjKC4Sq8Jl9cJQ2qY0Vkz1dGUNjqBcXzMWqQZEf2ZlPhEJTN8P9TzwzQHNb00G9IHjYPs';
+                console.log('Using Stripe test mode for local development');
+            } else {
+                // Production key - this placeholder will be replaced by Netlify build process
+                publishableKey = 'NETLIFY_STRIPE_PUBLISHABLE_KEY_PLACEHOLDER';
+                
+                // Validate the key was properly injected
+                if (publishableKey.includes('PLACEHOLDER')) {
+                    console.error('Stripe publishable key not properly configured in Netlify environment');
+                    // Fallback to test key for now (should be replaced with proper live key)
+                    publishableKey = 'pk_test_51RyJPcPQdMywmVkHaOfoOFZLAhcWELjKC4Sq8Jl9cJQ2qY0Vkz1dGUNjqBcXzMWqQZEf2ZlPhEJTN8P9TzwzQHNb00G9IHjYPs';
+                }
+            }
+            
+            try {
+                stripe = Stripe(publishableKey);
+                console.log('Stripe initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize Stripe:', error);
+                stripe = null; // This will trigger fallback to direct payment links
+            }
+        }
+        
+        // Create checkout session via Netlify function
+        async function createCheckoutSession() {
+            try {
+                showPaymentLoading();
+                
+                const response = await fetch('/.netlify/functions/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        priceId: 'price_1RyJuRPQdMywmVkH8Afo8raI',
+                        successUrl: `${window.location.origin}?success=true&session_id={CHECKOUT_SESSION_ID}`,
+                        cancelUrl: `${window.location.origin}?canceled=true`
+                    })
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(`Server error: ${errorData.error || response.statusText}`);
+                }
+                
+                const { sessionId } = await response.json();
+                
+                if (!sessionId) {
+                    throw new Error('No session ID received from server');
+                }
+                
+                const { error } = await stripe.redirectToCheckout({ sessionId });
+                
+                if (error) {
+                    console.error('Stripe redirect error:', error);
+                    throw new Error(`Payment processing error: ${error.message}`);
+                }
+            } catch (error) {
+                console.error('Payment error:', error);
+                hidePaymentLoading();
+                showPaymentError(error.message);
+                
+                // Track error for analytics
+                analytics.track('payment_error', { 
+                    error: error.message,
+                    timestamp: Date.now()
+                });
+            }
+        }
+        
+        // Show payment error with user-friendly message and retry option
+        function showPaymentError(errorMessage) {
+            const userMessage = errorMessage.includes('Network') || errorMessage.includes('fetch') 
+                ? 'Connection issue detected. Please check your internet connection and try again.'
+                : 'Payment processing temporarily unavailable. Please try again or use our direct payment link.';
+            
+            const shouldRetry = confirm(`${userMessage}\n\nWould you like to try again?`);
+            
+            if (shouldRetry) {
+                // Retry with a small delay
+                setTimeout(() => createCheckoutSession(), 1000);
+            } else {
+                // Fallback to direct Stripe payment link
+                analytics.track('payment_fallback_used', { error: errorMessage });
+                const proceedWithFallback = confirm('Would you like to proceed with our secure payment page instead?');
+                
+                if (proceedWithFallback) {
+                    window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+                }
+            }
+        }
+        
+        // Show loading state during payment process
+        function showPaymentLoading() {
+            const upgradeButtons = document.querySelectorAll('[onclick*="buy.stripe.com"], .btn[onclick*="showPaymentModal"], .btn[onclick*="processPayment"]');
+            upgradeButtons.forEach(btn => {
+                btn.disabled = true;
+                btn.style.opacity = '0.6';
+                btn.innerHTML = btn.innerHTML.replace(/👑|🚀|🔓/, '⏳') + ' Processing...';
+            });
+        }
+        
+        // Hide loading state
+        function hidePaymentLoading() {
+            const upgradeButtons = document.querySelectorAll('.btn');
+            upgradeButtons.forEach(btn => {
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                btn.innerHTML = btn.innerHTML.replace(' Processing...', '').replace('⏳', '👑');
+            });
+        }
+
         // Payment processing functions
         function showPaymentModal() {
-            // Direct redirect - no modal delay
             analytics.track('payment_modal_shown');
-            window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+            if (stripe) {
+                createCheckoutSession();
+            } else {
+                // Fallback if Stripe not initialized
+                window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+            }
         }
         
         function showTrialExpiredModal() {
             alert('Your 7-day free trial has expired. Upgrade to Pro to continue using premium features.');
-            window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+            if (stripe) {
+                createCheckoutSession();
+            } else {
+                window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+            }
         }
         
         function showUpgradeModal(message) {
-            // Direct redirect without modal delay
             analytics.track('upgrade_prompt_shown', { message: message });
-            window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+            if (stripe) {
+                createCheckoutSession();
+            } else {
+                window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+            }
         }
         
         function processPayment() {
-            // Redirect directly to Stripe Payment Link
-            window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+            analytics.track('process_payment_called');
+            if (stripe) {
+                createCheckoutSession();
+            } else {
+                window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+            }
         }
         
         function redirectToPayment() {
-            // Direct redirect function for immediate use
-            window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+            analytics.track('redirect_to_payment_called');
+            if (stripe) {
+                createCheckoutSession();
+            } else {
+                window.location.href = 'https://buy.stripe.com/00waEZ6NW6o44nsdNV7Vm02';
+            }
         }
 
         // Event listeners

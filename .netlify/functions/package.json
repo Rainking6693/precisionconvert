@@ -1,0 +1,9 @@
+{
+  "name": "netlify-functions",
+  "version": "1.0.0",
+  "description": "Netlify functions for PrecisionConvert",
+  "main": "index.js",
+  "dependencies": {
+    "stripe": "^14.21.0"
+  }
+}

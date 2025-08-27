@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Integration Test</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 600px; 
+            margin: 50px auto; 
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button:hover { background: #1d4ed8; }
+        button:disabled { background: #9ca3af; cursor: not-allowed; }
+        .status { 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .success { background: #d1fae5; color: #065f46; }
+        .error { background: #fee2e2; color: #991b1b; }
+        .info { background: #dbeafe; color: #1e40af; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Payment Integration Test</h1>
+        <p>This page tests the new Stripe integration for PrecisionConvert.io</p>
+        
+        <div id="status"></div>
+        
+        <h3>Tests:</h3>
+        
+        <button onclick="testStripeInit()">1. Test Stripe Initialization</button><br>
+        <button onclick="testNetlifyFunction()">2. Test Netlify Function</button><br>
+        <button onclick="testFullPaymentFlow()">3. Test Full Payment Flow</button><br>
+        <button onclick="runAllTests()">🚀 Run All Tests</button>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let stripe;
+        
+        function showStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('status');
+            statusDiv.className = `status ${type}`;
+            statusDiv.innerHTML = message;
+        }
+        
+        function addResult(test, success, message) {
+            const resultsDiv = document.getElementById('results');
+            const resultItem = document.createElement('div');
+            resultItem.className = `status ${success ? 'success' : 'error'}`;
+            resultItem.innerHTML = `${test}: ${success ? '✅' : '❌'} ${message}`;
+            resultsDiv.appendChild(resultItem);
+        }
+        
+        async function testStripeInit() {
+            showStatus('Testing Stripe initialization...', 'info');
+            
+            try {
+                // Use test key for this test
+                const testKey = 'pk_test_51RyJPcPQdMywmVkHaOfoOFZLAhcWELjKC4Sq8Jl9cJQ2qY0Vkz1dGUNjqBcXzMWqQZEf2ZlPhEJTN8P9TzwzQHNb00G9IHjYPs';
+                stripe = Stripe(testKey);
+                
+                addResult('Stripe Initialization', true, 'Stripe initialized successfully with test key');
+                showStatus('Stripe initialization test passed!', 'success');
+            } catch (error) {
+                addResult('Stripe Initialization', false, `Error: ${error.message}`);
+                showStatus('Stripe initialization test failed!', 'error');
+            }
+        }
+        
+        async function testNetlifyFunction() {
+            showStatus('Testing Netlify function...', 'info');
+            
+            try {
+                const response = await fetch('/.netlify/functions/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        priceId: 'price_1RyJuRPQdMywmVkH8Afo8raI',
+                        successUrl: `${window.location.origin}?success=true&session_id={CHECKOUT_SESSION_ID}`,
+                        cancelUrl: `${window.location.origin}?canceled=true`
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.sessionId) {
+                        addResult('Netlify Function', true, `Session ID received: ${data.sessionId.substring(0, 20)}...`);
+                        showStatus('Netlify function test passed!', 'success');
+                    } else {
+                        addResult('Netlify Function', false, 'No session ID in response');
+                        showStatus('Netlify function test failed!', 'error');
+                    }
+                } else {
+                    const errorData = await response.text();
+                    addResult('Netlify Function', false, `HTTP ${response.status}: ${errorData}`);
+                    showStatus('Netlify function test failed!', 'error');
+                }
+            } catch (error) {
+                addResult('Netlify Function', false, `Network error: ${error.message}`);
+                showStatus('Netlify function test failed!', 'error');
+            }
+        }
+        
+        async function testFullPaymentFlow() {
+            showStatus('Testing full payment flow (will not complete payment)...', 'info');
+            
+            if (!stripe) {
+                await testStripeInit();
+            }
+            
+            try {
+                // Test creating checkout session
+                const response = await fetch('/.netlify/functions/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        priceId: 'price_1RyJuRPQdMywmVkH8Afo8raI',
+                        successUrl: `${window.location.origin}?success=true&session_id={CHECKOUT_SESSION_ID}`,
+                        cancelUrl: `${window.location.origin}?canceled=true`
+                    })
+                });
+                
+                if (response.ok) {
+                    const { sessionId } = await response.json();
+                    
+                    // Don't actually redirect, just confirm the session is ready
+                    addResult('Full Payment Flow', true, 'Checkout session created successfully - ready for payment redirect');
+                    showStatus('Full payment flow test passed! (Payment redirect not executed)', 'success');
+                } else {
+                    addResult('Full Payment Flow', false, 'Failed to create checkout session');
+                    showStatus('Full payment flow test failed!', 'error');
+                }
+            } catch (error) {
+                addResult('Full Payment Flow', false, `Error: ${error.message}`);
+                showStatus('Full payment flow test failed!', 'error');
+            }
+        }
+        
+        async function runAllTests() {
+            document.getElementById('results').innerHTML = '';
+            showStatus('Running all tests...', 'info');
+            
+            await testStripeInit();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            await testNetlifyFunction();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            await testFullPaymentFlow();
+            
+            showStatus('All tests completed!', 'success');
+        }
+    </script>
+</body>
+</html>
