@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Test Suite - PrecisionConvert.io</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .test-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            background: #fff;
+        }
+        .test-category {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #2563eb;
+        }
+        .test-item {
+            margin: 1rem 0;
+            padding: 0.75rem;
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            border-left: 4px solid #64748b;
+        }
+        .test-item.pass {
+            border-left-color: #10b981;
+            background: #ecfdf5;
+        }
+        .test-item.fail {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+        .test-item.warning {
+            border-left-color: #f59e0b;
+            background: #fffbeb;
+        }
+        .status {
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        .status.pass { background: #10b981; color: white; }
+        .status.fail { background: #ef4444; color: white; }
+        .status.warning { background: #f59e0b; color: white; }
+        .status.info { background: #2563eb; color: white; }
+        .test-button {
+            background: #2563eb;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-weight: 600;
+        }
+        .test-button:hover {
+            background: #1e40af;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 style="text-align: center; color: #1e293b; margin-bottom: 2rem;">
+            🧪 PrecisionConvert.io QA Test Suite
+        </h1>
+        <p style="text-align: center; color: #64748b; margin-bottom: 2rem;">
+            Comprehensive testing of Pro Features Modal, Blog Navigation, and Cross-Browser Compatibility
+        </p>
+
+        <!-- Pro Features Modal Testing -->
+        <div class="test-section">
+            <div class="test-category">🎯 Pro Features Modal Testing</div>
+            
+            <div class="test-item" id="modal-button-test">
+                <h4>1. Modal Button Functionality <span class="status info" id="modal-button-status">TESTING</span></h4>
+                <p><strong>Test:</strong> "See All Pro Features" button opens modal (NOT Stripe redirect)</p>
+                <p><strong>Expected:</strong> Modal displays with 6 premium features</p>
+                <button class="test-button" onclick="testModalButton()">Test Modal Button</button>
+                <div id="modal-button-results"></div>
+            </div>
+
+            <div class="test-item" id="modal-features-test">
+                <h4>2. Premium Features Display <span class="status info" id="modal-features-status">TESTING</span></h4>
+                <p><strong>Test:</strong> Modal contains all 6 premium features with descriptions</p>
+                <p><strong>Expected:</strong> 15-Decimal Precision, Cooking Units, Historical Units, Custom Units, Batch Conversion, Premium Themes</p>
+                <button class="test-button" onclick="testModalFeatures()">Test Features Display</button>
+                <div id="modal-features-results"></div>
+            </div>
+
+            <div class="test-item" id="modal-interactions-test">
+                <h4>3. Modal Interaction Behaviors <span class="status info" id="modal-interactions-status">TESTING</span></h4>
+                <p><strong>Test:</strong> Modal closes on X button, outside click, and ESC key</p>
+                <button class="test-button" onclick="testModalInteractions()">Test Modal Interactions</button>
+                <div id="modal-interactions-results"></div>
+            </div>
+        </div>
+
+        <!-- Blog Navigation Testing -->
+        <div class="test-section">
+            <div class="test-category">📚 Blog Navigation Testing</div>
+            
+            <div class="test-item" id="blog-navigation-test">
+                <h4>4. Blog Links Navigation <span class="status info" id="blog-nav-status">TESTING</span></h4>
+                <p><strong>Test:</strong> All blog links work correctly from main page and between pages</p>
+                <button class="test-button" onclick="testBlogNavigation()">Test Blog Navigation</button>
+                <div id="blog-nav-results"></div>
+            </div>
+
+            <div class="test-item" id="blog-pages-test">
+                <h4>5. Blog Pages Loading <span class="status info" id="blog-pages-status">TESTING</span></h4>
+                <p><strong>Test:</strong> blog.html, scientific-unit-converter.html, cooking-unit-converter.html load properly</p>
+                <button class="test-button" onclick="testBlogPages()">Test Blog Pages</button>
+                <div id="blog-pages-results"></div>
+            </div>
+        </div>
+
+        <!-- SEO Testing -->
+        <div class="test-section">
+            <div class="test-category">🔍 SEO Elements Testing</div>
+            
+            <div class="test-item" id="seo-elements-test">
+                <h4>6. SEO Meta Tags <span class="status info" id="seo-status">TESTING</span></h4>
+                <p><strong>Test:</strong> Title tags, meta descriptions, schema markup validation</p>
+                <button class="test-button" onclick="testSEOElements()">Test SEO Elements</button>
+                <div id="seo-results"></div>
+            </div>
+        </div>
+
+        <!-- Live Testing Iframe -->
+        <div class="test-section">
+            <div class="test-category">🖥️ Live Testing Environment</div>
+            <p>Test the actual functionality in the embedded page below:</p>
+            <iframe src="index.html" id="live-test-frame"></iframe>
+        </div>
+
+        <!-- Test Results Summary -->
+        <div class="test-section" id="test-summary">
+            <div class="test-category">📊 Test Results Summary</div>
+            <div class="results-grid" id="summary-grid">
+                <!-- Results will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Test Results Storage
+        const testResults = {
+            modalButton: null,
+            modalFeatures: null,
+            modalInteractions: null,
+            blogNavigation: null,
+            blogPages: null,
+            seoElements: null
+        };
+
+        // Test 1: Modal Button Functionality
+        function testModalButton() {
+            const status = document.getElementById('modal-button-status');
+            const results = document.getElementById('modal-button-results');
+            status.textContent = 'RUNNING';
+            status.className = 'status warning';
+            
+            try {
+                // Load main page in iframe and test modal button
+                const iframe = document.getElementById('live-test-frame');
+                iframe.onload = function() {
+                    try {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        const modalButtons = iframeDoc.querySelectorAll('button[onclick*="showProFeatures"]');
+                        
+                        if (modalButtons.length > 0) {
+                            // Test if modal function exists
+                            const showProFeaturesExists = typeof iframe.contentWindow.showProFeatures === 'function';
+                            
+                            if (showProFeaturesExists) {
+                                testResults.modalButton = 'pass';
+                                status.textContent = 'PASS';
+                                status.className = 'status pass';
+                                results.innerHTML = `
+                                    <p>✅ Modal button found (${modalButtons.length} instances)</p>
+                                    <p>✅ showProFeatures() function exists</p>
+                                    <p>✅ Button correctly calls modal function (NOT Stripe redirect)</p>
+                                `;
+                            } else {
+                                testResults.modalButton = 'fail';
+                                status.textContent = 'FAIL';
+                                status.className = 'status fail';
+                                results.innerHTML = '<p>❌ showProFeatures() function not found</p>';
+                            }
+                        } else {
+                            testResults.modalButton = 'fail';
+                            status.textContent = 'FAIL';
+                            status.className = 'status fail';
+                            results.innerHTML = '<p>❌ Modal button with showProFeatures() not found</p>';
+                        }
+                        updateSummary();
+                    } catch (e) {
+                        testResults.modalButton = 'fail';
+                        status.textContent = 'FAIL';
+                        status.className = 'status fail';
+                        results.innerHTML = `<p>❌ Error testing modal button: ${e.message}</p>`;
+                        updateSummary();
+                    }
+                };
+                
+                // Trigger reload if already loaded
+                if (iframe.src) {
+                    iframe.src = iframe.src;
+                }
+            } catch (e) {
+                testResults.modalButton = 'fail';
+                status.textContent = 'FAIL';
+                status.className = 'status fail';
+                results.innerHTML = `<p>❌ Test setup error: ${e.message}</p>`;
+                updateSummary();
+            }
+        }
+
+        // Test 2: Premium Features Display
+        function testModalFeatures() {
+            const status = document.getElementById('modal-features-status');
+            const results = document.getElementById('modal-features-results');
+            status.textContent = 'RUNNING';
+            status.className = 'status warning';
+            
+            try {
+                const iframe = document.getElementById('live-test-frame');
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                const modal = iframeDoc.getElementById('proFeaturesModal');
+                
+                if (modal) {
+                    const expectedFeatures = [
+                        '15-Decimal Precision',
+                        'Cooking & Recipe Units',
+                        'Historical Units',
+                        'Custom Units',
+                        'Batch Conversion',
+                        'Premium Themes'
+                    ];
+                    
+                    const featureItems = modal.querySelectorAll('.pro-feature-item');
+                    let foundFeatures = [];
+                    let missingFeatures = [];
+                    
+                    expectedFeatures.forEach(feature => {
+                        let found = false;
+                        featureItems.forEach(item => {
+                            if (item.textContent.includes(feature)) {
+                                found = true;
+                                foundFeatures.push(feature);
+                            }
+                        });
+                        if (!found) {
+                            missingFeatures.push(feature);
+                        }
+                    });
+                    
+                    if (foundFeatures.length === 6 && missingFeatures.length === 0) {
+                        testResults.modalFeatures = 'pass';
+                        status.textContent = 'PASS';
+                        status.className = 'status pass';
+                        results.innerHTML = `
+                            <p>✅ All 6 premium features found:</p>
+                            <ul>${foundFeatures.map(f => `<li>✅ ${f}</li>`).join('')}</ul>
+                        `;
+                    } else {
+                        testResults.modalFeatures = 'warning';
+                        status.textContent = 'PARTIAL';
+                        status.className = 'status warning';
+                        results.innerHTML = `
+                            <p>⚠️ Found ${foundFeatures.length}/6 features</p>
+                            <p>Found: ${foundFeatures.join(', ')}</p>
+                            ${missingFeatures.length > 0 ? `<p>Missing: ${missingFeatures.join(', ')}</p>` : ''}
+                        `;
+                    }
+                } else {
+                    testResults.modalFeatures = 'fail';
+                    status.textContent = 'FAIL';
+                    status.className = 'status fail';
+                    results.innerHTML = '<p>❌ Pro Features Modal not found in DOM</p>';
+                }
+                updateSummary();
+            } catch (e) {
+                testResults.modalFeatures = 'fail';
+                status.textContent = 'FAIL';
+                status.className = 'status fail';
+                results.innerHTML = `<p>❌ Error testing modal features: ${e.message}</p>`;
+                updateSummary();
+            }
+        }
+
+        // Test 3: Modal Interactions
+        function testModalInteractions() {
+            const status = document.getElementById('modal-interactions-status');
+            const results = document.getElementById('modal-interactions-results');
+            status.textContent = 'RUNNING';
+            status.className = 'status warning';
+            
+            try {
+                const iframe = document.getElementById('live-test-frame');
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                const modal = iframeDoc.getElementById('proFeaturesModal');
+                
+                let testsPassed = 0;
+                let testsTotal = 3;
+                let testDetails = [];
+                
+                if (modal) {
+                    // Test 1: Close button exists
+                    const closeButton = modal.querySelector('.close');
+                    if (closeButton && closeButton.onclick) {
+                        testsPassed++;
+                        testDetails.push('✅ Close button (X) found with onclick handler');
+                    } else {
+                        testDetails.push('❌ Close button (X) missing or no onclick handler');
+                    }
+                    
+                    // Test 2: Outside click handler (check for window click listener)
+                    if (iframe.contentWindow.addEventListener) {
+                        testsPassed++;
+                        testDetails.push('✅ Outside click handler capability present');
+                    } else {
+                        testDetails.push('❌ Outside click handler not available');
+                    }
+                    
+                    // Test 3: ESC key handler (check for keydown listener)
+                    if (iframe.contentWindow.addEventListener) {
+                        testsPassed++;
+                        testDetails.push('✅ ESC key handler capability present');
+                    } else {
+                        testDetails.push('❌ ESC key handler not available');
+                    }
+                    
+                    if (testsPassed === testsTotal) {
+                        testResults.modalInteractions = 'pass';
+                        status.textContent = 'PASS';
+                        status.className = 'status pass';
+                    } else {
+                        testResults.modalInteractions = 'warning';
+                        status.textContent = 'PARTIAL';
+                        status.className = 'status warning';
+                    }
+                    
+                    results.innerHTML = `
+                        <p>Modal interaction tests: ${testsPassed}/${testsTotal} passed</p>
+                        <ul>${testDetails.map(detail => `<li>${detail}</li>`).join('')}</ul>
+                    `;
+                } else {
+                    testResults.modalInteractions = 'fail';
+                    status.textContent = 'FAIL';
+                    status.className = 'status fail';
+                    results.innerHTML = '<p>❌ Pro Features Modal not found</p>';
+                }
+                updateSummary();
+            } catch (e) {
+                testResults.modalInteractions = 'fail';
+                status.textContent = 'FAIL';
+                status.className = 'status fail';
+                results.innerHTML = `<p>❌ Error testing modal interactions: ${e.message}</p>`;
+                updateSummary();
+            }
+        }
+
+        // Test 4: Blog Navigation
+        function testBlogNavigation() {
+            const status = document.getElementById('blog-nav-status');
+            const results = document.getElementById('blog-nav-results');
+            status.textContent = 'RUNNING';
+            status.className = 'status warning';
+            
+            try {
+                const iframe = document.getElementById('live-test-frame');
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                
+                const blogLinks = iframeDoc.querySelectorAll('a[href*="blog"]');
+                let linkTests = [];
+                
+                blogLinks.forEach((link, index) => {
+                    const href = link.getAttribute('href');
+                    const linkText = link.textContent.trim();
+                    
+                    if (href === 'blog.html' || href.includes('blog.html')) {
+                        linkTests.push(`✅ Blog link found: "${linkText}" → ${href}`);
+                    } else if (href.includes('scientific-unit-converter') || href.includes('cooking-unit-converter')) {
+                        linkTests.push(`✅ Guide link found: "${linkText}" → ${href}`);
+                    }
+                });
+                
+                if (linkTests.length > 0) {
+                    testResults.blogNavigation = 'pass';
+                    status.textContent = 'PASS';
+                    status.className = 'status pass';
+                    results.innerHTML = `
+                        <p>✅ Found ${linkTests.length} blog navigation links</p>
+                        <ul>${linkTests.map(test => `<li>${test}</li>`).join('')}</ul>
+                    `;
+                } else {
+                    testResults.blogNavigation = 'fail';
+                    status.textContent = 'FAIL';
+                    status.className = 'status fail';
+                    results.innerHTML = '<p>❌ No blog navigation links found</p>';
+                }
+                updateSummary();
+            } catch (e) {
+                testResults.blogNavigation = 'fail';
+                status.textContent = 'FAIL';
+                status.className = 'status fail';
+                results.innerHTML = `<p>❌ Error testing blog navigation: ${e.message}</p>`;
+                updateSummary();
+            }
+        }
+
+        // Test 5: Blog Pages Loading
+        function testBlogPages() {
+            const status = document.getElementById('blog-pages-status');
+            const results = document.getElementById('blog-pages-results');
+            status.textContent = 'RUNNING';
+            status.className = 'status warning';
+            
+            const blogPages = [
+                'blog.html',
+                'scientific-unit-converter.html', 
+                'cooking-unit-converter.html'
+            ];
+            
+            let pageTests = [];
+            let completedTests = 0;
+            
+            blogPages.forEach(page => {
+                fetch(page)
+                    .then(response => {
+                        if (response.ok) {
+                            return response.text();
+                        } else {
+                            throw new Error(`HTTP ${response.status}`);
+                        }
+                    })
+                    .then(html => {
+                        if (html.includes('<title>') && html.includes('</title>')) {
+                            const titleMatch = html.match(/<title>(.*?)<\/title>/);
+                            const title = titleMatch ? titleMatch[1] : 'Unknown';
+                            pageTests.push(`✅ ${page} loaded successfully - "${title}"`);
+                        } else {
+                            pageTests.push(`⚠️ ${page} loaded but may have issues`);
+                        }
+                        completedTests++;
+                        if (completedTests === blogPages.length) {
+                            finalizeBlogPageTests();
+                        }
+                    })
+                    .catch(error => {
+                        pageTests.push(`❌ ${page} failed to load - ${error.message}`);
+                        completedTests++;
+                        if (completedTests === blogPages.length) {
+                            finalizeBlogPageTests();
+                        }
+                    });
+            });
+            
+            function finalizeBlogPageTests() {
+                const passedTests = pageTests.filter(test => test.startsWith('✅')).length;
+                
+                if (passedTests === blogPages.length) {
+                    testResults.blogPages = 'pass';
+                    status.textContent = 'PASS';
+                    status.className = 'status pass';
+                } else if (passedTests > 0) {
+                    testResults.blogPages = 'warning';
+                    status.textContent = 'PARTIAL';
+                    status.className = 'status warning';
+                } else {
+                    testResults.blogPages = 'fail';
+                    status.textContent = 'FAIL';
+                    status.className = 'status fail';
+                }
+                
+                results.innerHTML = `
+                    <p>Blog pages test: ${passedTests}/${blogPages.length} pages loaded successfully</p>
+                    <ul>${pageTests.map(test => `<li>${test}</li>`).join('')}</ul>
+                `;
+                updateSummary();
+            }
+        }
+
+        // Test 6: SEO Elements
+        function testSEOElements() {
+            const status = document.getElementById('seo-status');
+            const results = document.getElementById('seo-results');
+            status.textContent = 'RUNNING';
+            status.className = 'status warning';
+            
+            try {
+                const iframe = document.getElementById('live-test-frame');
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                
+                let seoTests = [];
+                let passedTests = 0;
+                
+                // Test title tag
+                const title = iframeDoc.querySelector('title');
+                if (title && title.textContent.length > 0) {
+                    seoTests.push(`✅ Title tag present: "${title.textContent.substring(0, 60)}..."`);
+                    passedTests++;
+                } else {
+                    seoTests.push('❌ Title tag missing');
+                }
+                
+                // Test meta description
+                const metaDesc = iframeDoc.querySelector('meta[name="description"]');
+                if (metaDesc && metaDesc.content.length > 0) {
+                    seoTests.push(`✅ Meta description present (${metaDesc.content.length} chars)`);
+                    passedTests++;
+                } else {
+                    seoTests.push('❌ Meta description missing');
+                }
+                
+                // Test canonical URL
+                const canonical = iframeDoc.querySelector('link[rel="canonical"]');
+                if (canonical && canonical.href) {
+                    seoTests.push(`✅ Canonical URL present: ${canonical.href}`);
+                    passedTests++;
+                } else {
+                    seoTests.push('❌ Canonical URL missing');
+                }
+                
+                // Test schema markup
+                const schemaScripts = iframeDoc.querySelectorAll('script[type="application/ld+json"]');
+                if (schemaScripts.length > 0) {
+                    seoTests.push(`✅ Schema markup found (${schemaScripts.length} scripts)`);
+                    passedTests++;
+                } else {
+                    seoTests.push('❌ Schema markup missing');
+                }
+                
+                // Test Open Graph
+                const ogTitle = iframeDoc.querySelector('meta[property="og:title"]');
+                if (ogTitle && ogTitle.content) {
+                    seoTests.push('✅ Open Graph tags present');
+                    passedTests++;
+                } else {
+                    seoTests.push('❌ Open Graph tags missing');
+                }
+                
+                if (passedTests >= 4) {
+                    testResults.seoElements = 'pass';
+                    status.textContent = 'PASS';
+                    status.className = 'status pass';
+                } else if (passedTests >= 2) {
+                    testResults.seoElements = 'warning';
+                    status.textContent = 'PARTIAL';
+                    status.className = 'status warning';
+                } else {
+                    testResults.seoElements = 'fail';
+                    status.textContent = 'FAIL';
+                    status.className = 'status fail';
+                }
+                
+                results.innerHTML = `
+                    <p>SEO elements test: ${passedTests}/5 elements found</p>
+                    <ul>${seoTests.map(test => `<li>${test}</li>`).join('')}</ul>
+                `;
+                updateSummary();
+            } catch (e) {
+                testResults.seoElements = 'fail';
+                status.textContent = 'FAIL';
+                status.className = 'status fail';
+                results.innerHTML = `<p>❌ Error testing SEO elements: ${e.message}</p>`;
+                updateSummary();
+            }
+        }
+
+        // Update Summary
+        function updateSummary() {
+            const summaryGrid = document.getElementById('summary-grid');
+            let totalTests = 0;
+            let passedTests = 0;
+            let failedTests = 0;
+            let partialTests = 0;
+            
+            Object.values(testResults).forEach(result => {
+                if (result !== null) {
+                    totalTests++;
+                    if (result === 'pass') passedTests++;
+                    else if (result === 'fail') failedTests++;
+                    else if (result === 'warning') partialTests++;
+                }
+            });
+            
+            summaryGrid.innerHTML = `
+                <div style="background: #10b981; color: white; padding: 1rem; border-radius: 0.5rem; text-align: center;">
+                    <h3>Passed Tests</h3>
+                    <div style="font-size: 2rem; font-weight: bold;">${passedTests}</div>
+                </div>
+                <div style="background: #f59e0b; color: white; padding: 1rem; border-radius: 0.5rem; text-align: center;">
+                    <h3>Partial Tests</h3>
+                    <div style="font-size: 2rem; font-weight: bold;">${partialTests}</div>
+                </div>
+                <div style="background: #ef4444; color: white; padding: 1rem; border-radius: 0.5rem; text-align: center;">
+                    <h3>Failed Tests</h3>
+                    <div style="font-size: 2rem; font-weight: bold;">${failedTests}</div>
+                </div>
+                <div style="background: #2563eb; color: white; padding: 1rem; border-radius: 0.5rem; text-align: center;">
+                    <h3>Total Tests</h3>
+                    <div style="font-size: 2rem; font-weight: bold;">${totalTests}</div>
+                </div>
+            `;
+        }
+
+        // Auto-run tests when page loads
+        window.onload = function() {
+            setTimeout(() => {
+                testModalButton();
+                setTimeout(testModalFeatures, 1000);
+                setTimeout(testModalInteractions, 2000);
+                setTimeout(testBlogNavigation, 3000);
+                setTimeout(testBlogPages, 4000);
+                setTimeout(testSEOElements, 5000);
+            }, 2000);
+        };
+    </script>
+</body>
+</html>

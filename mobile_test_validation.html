@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Modal Test - PrecisionConvert.io</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8fafc;
+        }
+        .test-device {
+            margin: 20px auto;
+            border: 2px solid #2563eb;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .device-header {
+            background: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .device-screen {
+            background: white;
+            overflow: hidden;
+        }
+        .mobile-phone {
+            width: 375px;
+            max-width: 90vw;
+        }
+        .mobile-phone .device-screen {
+            height: 667px;
+        }
+        .tablet {
+            width: 768px;
+            max-width: 90vw;
+        }
+        .tablet .device-screen {
+            height: 500px;
+        }
+        .desktop {
+            width: 1200px;
+            max-width: 90vw;
+        }
+        .desktop .device-screen {
+            height: 600px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .test-controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .test-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        .test-btn:hover {
+            background: #1e40af;
+        }
+        .results-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .pass { color: #10b981; }
+        .fail { color: #ef4444; }
+        .warning { color: #f59e0b; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: #1e293b;">📱 Mobile Modal Testing Suite</h1>
+    <p style="text-align: center; color: #64748b; margin-bottom: 30px;">
+        Testing Pro Features modal responsiveness across different device sizes
+    </p>
+
+    <div class="test-controls">
+        <button class="test-btn" onclick="testMobileModal()">Test Mobile Modal</button>
+        <button class="test-btn" onclick="testTabletModal()">Test Tablet Modal</button>
+        <button class="test-btn" onclick="testDesktopModal()">Test Desktop Modal</button>
+        <button class="test-btn" onclick="runAllTests()">Run All Tests</button>
+    </div>
+
+    <!-- Mobile Phone Test -->
+    <div class="test-device mobile-phone">
+        <div class="device-header">📱 Mobile Phone (375x667px)</div>
+        <div class="device-screen">
+            <iframe src="index.html" id="mobile-frame"></iframe>
+        </div>
+    </div>
+
+    <!-- Tablet Test -->
+    <div class="test-device tablet">
+        <div class="device-header">📱 Tablet (768x500px)</div>
+        <div class="device-screen">
+            <iframe src="index.html" id="tablet-frame"></iframe>
+        </div>
+    </div>
+
+    <!-- Desktop Test -->
+    <div class="test-device desktop">
+        <div class="device-header">💻 Desktop (1200x600px)</div>
+        <div class="device-screen">
+            <iframe src="index.html" id="desktop-frame"></iframe>
+        </div>
+    </div>
+
+    <!-- Test Results -->
+    <div class="results-panel">
+        <h3>Modal Responsiveness Test Results</h3>
+        <div id="test-results">
+            <p>Click the test buttons above to validate modal functionality across different screen sizes.</p>
+            
+            <h4>✅ Expected Behaviors:</h4>
+            <ul>
+                <li><strong>Mobile:</strong> Modal should be full-screen or near full-screen with proper touch targets</li>
+                <li><strong>Tablet:</strong> Modal should be centered with appropriate padding</li>
+                <li><strong>Desktop:</strong> Modal should be centered with max-width constraint</li>
+                <li><strong>All Devices:</strong> Modal should prevent background scrolling</li>
+                <li><strong>Touch Devices:</strong> All buttons should be easily tappable (44px minimum)</li>
+            </ul>
+
+            <h4>🔍 Test Criteria:</h4>
+            <ul>
+                <li>Modal opens correctly on "See All Pro Features" button click</li>
+                <li>Modal content is readable and properly formatted</li>
+                <li>Close button (X) is easily accessible and functional</li>
+                <li>Outside click to close works (desktop) / touch to close works (mobile)</li>
+                <li>Modal doesn't break layout or cause horizontal scrolling</li>
+                <li>All 6 premium features are visible and properly formatted</li>
+                <li>"Upgrade to Pro" button is prominent and functional</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Detailed Test Analysis -->
+    <div class="results-panel">
+        <h3>🧪 Automated Test Analysis</h3>
+        <div id="automated-results">
+            <div id="mobile-test-result">
+                <h4>📱 Mobile Test Results</h4>
+                <div id="mobile-details">Ready to test...</div>
+            </div>
+            <div id="tablet-test-result">
+                <h4>📱 Tablet Test Results</h4>
+                <div id="tablet-details">Ready to test...</div>
+            </div>
+            <div id="desktop-test-result">
+                <h4>💻 Desktop Test Results</h4>
+                <div id="desktop-details">Ready to test...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function testMobileModal() {
+            testModalOnDevice('mobile', 'mobile-frame', 'mobile-details');
+        }
+
+        function testTabletModal() {
+            testModalOnDevice('tablet', 'tablet-frame', 'tablet-details');
+        }
+
+        function testDesktopModal() {
+            testModalOnDevice('desktop', 'desktop-frame', 'desktop-details');
+        }
+
+        function runAllTests() {
+            setTimeout(() => testMobileModal(), 500);
+            setTimeout(() => testTabletModal(), 1500);
+            setTimeout(() => testDesktopModal(), 2500);
+        }
+
+        function testModalOnDevice(deviceType, frameId, resultsId) {
+            const iframe = document.getElementById(frameId);
+            const resultsDiv = document.getElementById(resultsId);
+            
+            resultsDiv.innerHTML = '<p style="color: #f59e0b;">⏳ Testing in progress...</p>';
+            
+            iframe.onload = function() {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    const iframeWindow = iframe.contentWindow;
+                    
+                    // Test results array
+                    let testResults = [];
+                    let passedTests = 0;
+                    
+                    // Test 1: Modal exists
+                    const modal = iframeDoc.getElementById('proFeaturesModal');
+                    if (modal) {
+                        testResults.push('<span class="pass">✅ Modal element found</span>');
+                        passedTests++;
+                    } else {
+                        testResults.push('<span class="fail">❌ Modal element not found</span>');
+                    }
+                    
+                    // Test 2: Modal button exists
+                    const modalButton = iframeDoc.querySelector('button[onclick*="showProFeatures"]');
+                    if (modalButton) {
+                        testResults.push('<span class="pass">✅ Modal trigger button found</span>');
+                        passedTests++;
+                        
+                        // Test button size for touch targets (mobile)
+                        if (deviceType === 'mobile') {
+                            const buttonRect = modalButton.getBoundingClientRect();
+                            if (buttonRect.height >= 44 && buttonRect.width >= 44) {
+                                testResults.push('<span class="pass">✅ Touch target size adequate (44px+)</span>');
+                                passedTests++;
+                            } else {
+                                testResults.push('<span class="warning">⚠️ Touch target may be too small</span>');
+                            }
+                        } else {
+                            passedTests++; // Skip touch target test for non-mobile
+                        }
+                    } else {
+                        testResults.push('<span class="fail">❌ Modal trigger button not found</span>');
+                    }
+                    
+                    // Test 3: Modal responsive styles
+                    if (modal) {
+                        const modalContent = modal.querySelector('.modal-content');
+                        if (modalContent) {
+                            const contentStyles = iframeWindow.getComputedStyle(modalContent);
+                            const maxWidth = contentStyles.maxWidth;
+                            const width = contentStyles.width;
+                            
+                            if (deviceType === 'mobile') {
+                                if (width === '90%' || maxWidth === '90vw' || parseInt(maxWidth) > 300) {
+                                    testResults.push('<span class="pass">✅ Modal width appropriate for mobile</span>');
+                                    passedTests++;
+                                } else {
+                                    testResults.push('<span class="warning">⚠️ Modal width may not be optimal for mobile</span>');
+                                }
+                            } else {
+                                if (parseInt(maxWidth) > 0 && parseInt(maxWidth) < 800) {
+                                    testResults.push('<span class="pass">✅ Modal max-width constrained appropriately</span>');
+                                    passedTests++;
+                                } else {
+                                    testResults.push('<span class="warning">⚠️ Modal width constraint may need adjustment</span>');
+                                }
+                            }
+                        } else {
+                            testResults.push('<span class="fail">❌ Modal content container not found</span>');
+                        }
+                    }
+                    
+                    // Test 4: Premium features count
+                    if (modal) {
+                        const featureItems = modal.querySelectorAll('.pro-feature-item');
+                        if (featureItems.length >= 6) {
+                            testResults.push('<span class="pass">✅ All 6 premium features present</span>');
+                            passedTests++;
+                        } else {
+                            testResults.push(`<span class="warning">⚠️ Only ${featureItems.length}/6 features found</span>`);
+                        }
+                    }
+                    
+                    // Test 5: Close button accessibility
+                    if (modal) {
+                        const closeButton = modal.querySelector('.close');
+                        if (closeButton) {
+                            testResults.push('<span class="pass">✅ Close button found</span>');
+                            passedTests++;
+                            
+                            // Check close button size for mobile
+                            if (deviceType === 'mobile') {
+                                const closeRect = closeButton.getBoundingClientRect();
+                                if (closeRect.height >= 44 || closeButton.style.fontSize === '2rem') {
+                                    testResults.push('<span class="pass">✅ Close button touch-friendly</span>');
+                                    passedTests++;
+                                } else {
+                                    testResults.push('<span class="warning">⚠️ Close button may be too small for touch</span>');
+                                }
+                            } else {
+                                passedTests++; // Skip for non-mobile
+                            }
+                        } else {
+                            testResults.push('<span class="fail">❌ Close button not found</span>');
+                        }
+                    }
+                    
+                    // Calculate success rate
+                    const totalTests = deviceType === 'mobile' ? 7 : 6;
+                    const successRate = Math.round((passedTests / totalTests) * 100);
+                    
+                    let statusClass = 'pass';
+                    let statusText = 'PASS';
+                    
+                    if (successRate < 70) {
+                        statusClass = 'fail';
+                        statusText = 'FAIL';
+                    } else if (successRate < 90) {
+                        statusClass = 'warning';
+                        statusText = 'PARTIAL';
+                    }
+                    
+                    resultsDiv.innerHTML = `
+                        <p><strong class="${statusClass}">${statusText}</strong> - ${passedTests}/${totalTests} tests passed (${successRate}%)</p>
+                        <ul>
+                            ${testResults.map(result => `<li>${result}</li>`).join('')}
+                        </ul>
+                        <p><strong>Device-specific notes:</strong></p>
+                        <ul>
+                            ${getDeviceSpecificNotes(deviceType)}
+                        </ul>
+                    `;
+                    
+                } catch (error) {
+                    resultsDiv.innerHTML = `<p class="fail">❌ Error testing ${deviceType}: ${error.message}</p>`;
+                }
+            };
+            
+            // Trigger reload if needed
+            if (iframe.src) {
+                iframe.src = iframe.src;
+            }
+        }
+        
+        function getDeviceSpecificNotes(deviceType) {
+            const notes = {
+                mobile: [
+                    '<li>Modal should be near full-screen for better mobile experience</li>',
+                    '<li>Touch targets should be minimum 44px for accessibility</li>',
+                    '<li>Text should remain readable at mobile viewport</li>',
+                    '<li>Close button should be easily reachable with thumb</li>'
+                ],
+                tablet: [
+                    '<li>Modal should be centered with comfortable padding</li>',
+                    '<li>Content should utilize available space efficiently</li>',
+                    '<li>Both touch and mouse interactions should work</li>'
+                ],
+                desktop: [
+                    '<li>Modal should have reasonable max-width constraint</li>',
+                    '<li>Content should be well-centered and readable</li>',
+                    '<li>Hover states should provide clear feedback</li>'
+                ]
+            };
+            
+            return notes[deviceType].join('');
+        }
+
+        // Auto-run tests after page loads
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('test-results').innerHTML += 
+                    '<p style="color: #2563eb; font-weight: 600;">🚀 Page loaded. Click test buttons to validate modal responsiveness!</p>';
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

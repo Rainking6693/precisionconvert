@@ -1,0 +1,47 @@
+{
+  "name": "precisionconvert",
+  "version": "2.0.0",
+  "description": "Professional unit converter with blog and Pro Features",
+  "main": "index.html",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js && python -m http.server 8000",
+    "test": "python run_tests.py",
+    "validate": "python final_validation.py",
+    "deploy": "npm run build && npm run test"
+  },
+  "keywords": [
+    "unit-converter",
+    "measurement-conversion", 
+    "scientific-calculator",
+    "cooking-converter",
+    "blog",
+    "engineering-tools"
+  ],
+  "author": "PrecisionConvert.io",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/precisionconvert/precisionconvert.git"
+  },
+  "homepage": "https://precisionconvert.io",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  },
+  "dependencies": {},
+  "netlify": {
+    "functions": ".netlify/functions",
+    "build": {
+      "command": "npm run build",
+      "publish": "."
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie 11"
+  ]
+}

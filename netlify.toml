@@ -1,22 +1,201 @@
 [build]
   functions = ".netlify/functions"
   command = "node build.js"
+  publish = "."
 
 [functions]
   node_bundler = "esbuild"
 
+[build.environment]
+  AWS_LAMBDA_JS_RUNTIME = "nodejs18.x"
+
+# ============================================================================
+# CLEAN URL REDIRECTS FOR BLOG PAGES
+# ============================================================================
+
+# Blog section clean URLs
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 200
+
+[[redirects]]
+  from = "/scientific-unit-converter"
+  to = "/scientific-unit-converter.html"
+  status = 200
+
+[[redirects]]
+  from = "/cooking-unit-converter"
+  to = "/cooking-unit-converter.html"
+  status = 200
+
+# API redirects
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
 
-[build.environment]
-  AWS_LAMBDA_JS_RUNTIME = "nodejs18.x"
+# ============================================================================
+# SEO-FRIENDLY REDIRECTS
+# ============================================================================
 
-# Additional security headers for payment processing
+# Blog variations
+[[redirects]]
+  from = "/blog/"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/guides"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/guides/*"
+  to = "/blog.html"
+  status = 301
+
+# Scientific converter variations
+[[redirects]]
+  from = "/scientific"
+  to = "/scientific-unit-converter.html"
+  status = 301
+
+[[redirects]]
+  from = "/engineering"
+  to = "/scientific-unit-converter.html"
+  status = 301
+
+[[redirects]]
+  from = "/lab"
+  to = "/scientific-unit-converter.html"
+  status = 301
+
+# Cooking converter variations
+[[redirects]]
+  from = "/cooking"
+  to = "/cooking-unit-converter.html"
+  status = 301
+
+[[redirects]]
+  from = "/recipe"
+  to = "/cooking-unit-converter.html"
+  status = 301
+
+[[redirects]]
+  from = "/baking"
+  to = "/cooking-unit-converter.html"
+  status = 301
+
+# ============================================================================
+# COMPREHENSIVE HTTP HEADERS
+# ============================================================================
+
+# Main application pages - Enhanced security & performance
 [[headers]]
-  for = "/*"
+  for = "/*.html"
   [headers.values]
-    Content-Security-Policy = "default-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://js.stripe.com; connect-src 'self' https://api.stripe.com; frame-src https://js.stripe.com; style-src 'self' 'unsafe-inline'"
-    X-Frame-Options = "SAMEORIGIN"
+    # Security Headers
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://connect.facebook.net; connect-src 'self' https://api.stripe.com https://www.google-analytics.com https://analytics.google.com; frame-src https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(self)"
+    
+    # Performance Headers
+    Cache-Control = "public, max-age=3600, must-revalidate"
+    Vary = "Accept-Encoding"
+    
+    # Blog-specific headers
+    X-Robots-Tag = "index, follow, max-snippet:-1, max-image-preview:large"
+
+# Blog pages - Optimized caching and SEO
+[[headers]]
+  for = "/blog.html"
+  [headers.values]
+    Cache-Control = "public, max-age=1800, must-revalidate"
+    X-Content-Type = "text/html; charset=utf-8"
+    X-Page-Type = "blog-index"
+
+[[headers]]
+  for = "/scientific-unit-converter.html"
+  [headers.values]
+    Cache-Control = "public, max-age=7200, must-revalidate"
+    X-Content-Type = "text/html; charset=utf-8"
+    X-Page-Type = "blog-article"
+    X-Article-Category = "scientific"
+
+[[headers]]
+  for = "/cooking-unit-converter.html"
+  [headers.values]
+    Cache-Control = "public, max-age=7200, must-revalidate"
+    X-Content-Type = "text/html; charset=utf-8"
+    X-Page-Type = "blog-article"
+    X-Article-Category = "cooking"
+
+# Static assets - Long-term caching
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript; charset=utf-8"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css; charset=utf-8"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/png"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/jpeg"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/webp"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/svg+xml"
+
+# SEO and meta files
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+    Content-Type = "application/xml; charset=utf-8"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+    Content-Type = "text/plain; charset=utf-8"
+
+# Service Worker - Short cache to allow updates
+[[headers]]
+  for = "/service-worker.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Type = "application/javascript; charset=utf-8"
+
+# API endpoints - No caching for dynamic content
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"

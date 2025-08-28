@@ -1,9 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- Main Application Page -->
   <url>
     <loc>https://precisionconvert.io/</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
+  <!-- Blog Index Page -->
+  <url>
+    <loc>https://precisionconvert.io/blog.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://precisionconvert.io/blog-og-image.png</image:loc>
+      <image:title>Unit Conversion Blog - Expert Guides & Tips</image:title>
+      <image:caption>Professional unit conversion guides for engineers, scientists, and chefs</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Clean URL for Blog Index -->
+  <url>
+    <loc>https://precisionconvert.io/blog</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Scientific Unit Converter Guide -->
+  <url>
+    <loc>https://precisionconvert.io/scientific-unit-converter.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://precisionconvert.io/scientific-converter-og.png</image:loc>
+      <image:title>Scientific Unit Converter Guide</image:title>
+      <image:caption>Complete guide for engineers and scientists - SI units, precision calculations</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Clean URL for Scientific Guide -->
+  <url>
+    <loc>https://precisionconvert.io/scientific-unit-converter</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Cooking Unit Converter Guide -->
+  <url>
+    <loc>https://precisionconvert.io/cooking-unit-converter.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://precisionconvert.io/cooking-converter-og.png</image:loc>
+      <image:title>Cooking Unit Converter Guide</image:title>
+      <image:caption>Professional recipe conversion guide - cups to grams, recipe scaling</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Clean URL for Cooking Guide -->
+  <url>
+    <loc>https://precisionconvert.io/cooking-unit-converter</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Alternative URLs for SEO -->
+  <url>
+    <loc>https://precisionconvert.io/guides</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://precisionconvert.io/scientific</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://precisionconvert.io/engineering</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://precisionconvert.io/cooking</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://precisionconvert.io/recipe</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://precisionconvert.io/baking</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
 </urlset>
