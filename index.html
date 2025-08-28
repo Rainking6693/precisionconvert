@@ -671,7 +671,7 @@
                 </a>
                 <div class="nav-controls">
                     <a href="#converter" class="btn btn-secondary" title="Free Unit Converter Tool">Try Free Now</a>
-                    <a href="#upgrade" class="btn btn-primary" title="Professional Unit Converter Features">Upgrade to Pro →</a>
+                    <button onclick="initiateUpgrade()" class="btn btn-primary" title="Professional Unit Converter Features">Upgrade to Pro →</button>
                 </div>
             </div>
         </div>
@@ -688,7 +688,99 @@
                 </p>
                 <div class="hero-cta">
                     <a href="#converter" class="btn btn-hero-primary" title="Start Converting Units Now">Try Free Now</a>
-                    <a href="#upgrade" class="btn btn-hero-secondary" title="Professional Precision Calculator">Upgrade to Pro →</a>
+                    <button onclick="initiateUpgrade()" class="btn btn-hero-secondary" title="Professional Precision Calculator">Upgrade to Pro →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Converter Section - MOVED TO TOP FOR IMMEDIATE VISIBILITY -->
+    <section id="converter" class="converter-section" style="display: block; padding: 4rem 0; background: var(--surface-color);">
+        <div class="container">
+            <div class="converter-card" style="background: var(--background-color); padding: 3rem; border-radius: 1.5rem; box-shadow: var(--shadow-lg); max-width: 1000px; margin: 0 auto;">
+                <div class="converter-header" style="text-align: center; margin-bottom: 2rem;">
+                    <div class="precision-badge" style="display: inline-flex; align-items: center; background: var(--primary-color); color: white; padding: 0.5rem 1rem; border-radius: 2rem; margin-bottom: 1rem;">
+                        <span class="precision-icon" style="margin-right: 0.5rem;">⚡</span>
+                        <span class="precision-text">PRECISION GRADE</span>
+                    </div>
+                    <h2 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 2rem;">Professional Unit Converter</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Precision calculations trusted by engineers and scientists worldwide</p>
+                </div>
+
+                <!-- Categories -->
+                <div class="categories" id="categories" style="margin-bottom: 2rem;">
+                    <div class="category-section basic-categories" style="margin-bottom: 2rem;">
+                        <div class="category-section-label" style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">BASIC CONVERSIONS</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <button class="category-btn active" data-category="length" style="padding: 0.5rem 1rem; border: 2px solid var(--primary-color); background: var(--primary-color); color: white; border-radius: 0.5rem; cursor: pointer; transition: var(--transition);">📏 Length</button>
+                            <button class="category-btn" data-category="weight" style="padding: 0.5rem 1rem; border: 2px solid var(--border-color); background: transparent; color: var(--text-primary); border-radius: 0.5rem; cursor: pointer; transition: var(--transition);">⚖️ Weight</button>
+                            <button class="category-btn" data-category="temperature" style="padding: 0.5rem 1rem; border: 2px solid var(--border-color); background: transparent; color: var(--text-primary); border-radius: 0.5rem; cursor: pointer; transition: var(--transition);">🌡️ Temperature</button>
+                            <button class="category-btn" data-category="volume" style="padding: 0.5rem 1rem; border: 2px solid var(--border-color); background: transparent; color: var(--text-primary); border-radius: 0.5rem; cursor: pointer; transition: var(--transition);">🫗 Volume</button>
+                            <button class="category-btn" data-category="area" style="padding: 0.5rem 1rem; border: 2px solid var(--border-color); background: transparent; color: var(--text-primary); border-radius: 0.5rem; cursor: pointer; transition: var(--transition);">📐 Area</button>
+                            <button class="category-btn" data-category="time" style="padding: 0.5rem 1rem; border: 2px solid var(--border-color); background: transparent; color: var(--text-primary); border-radius: 0.5rem; cursor: pointer; transition: var(--transition);">⏰ Time</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Precision Controls -->
+                <div class="precision-controls" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                    <label for="precision" style="color: var(--text-primary);">Decimal Places:</label>
+                    <select id="precision" class="select-field" style="padding: 0.5rem; border: 2px solid var(--border-color); border-radius: 0.5rem; background: var(--background-color); color: var(--text-primary);">
+                        <option value="2">2 places ✅ FREE</option>
+                        <option value="4">4 places 💎 PRO</option>
+                        <option value="8">8 places 💎 PRO</option>
+                        <option value="15">15 places 💎 PRO</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="initiateUpgrade()" style="font-size: 0.9rem;">🔓 Unlock Pro</button>
+                    <label style="display: flex; align-items: center; color: var(--text-primary);">
+                        <input type="checkbox" id="scientificNotation" style="margin-right: 0.5rem;"> 🔬 Scientific Notation
+                    </label>
+                </div>
+
+                <!-- Converter Grid -->
+                <div class="converter-grid" style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: end; margin-bottom: 2rem;">
+                    <div class="input-group">
+                        <label for="fromUnit" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">From</label>
+                        <select id="fromUnit" class="select-field" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 0.5rem; background: var(--background-color); color: var(--text-primary); margin-bottom: 0.5rem;">
+                            <option value="meters">Meters</option>
+                            <option value="feet">Feet</option>
+                            <option value="inches">Inches</option>
+                            <option value="kilometers">Kilometers</option>
+                            <option value="miles">Miles</option>
+                            <option value="yards">Yards</option>
+                            <option value="centimeters">Centimeters</option>
+                            <option value="millimeters">Millimeters</option>
+                        </select>
+                        <input type="number" id="inputValue" class="input-field" placeholder="Enter value" step="any" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 0.5rem; background: var(--background-color); color: var(--text-primary);">
+                    </div>
+                    
+                    <button class="swap-btn" id="swapBtn" style="padding: 0.75rem; background: var(--accent-color); color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-size: 1.2rem; transition: var(--transition);">
+                        ⇄
+                    </button>
+                    
+                    <div class="input-group">
+                        <label for="toUnit" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">To</label>
+                        <select id="toUnit" class="select-field" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 0.5rem; background: var(--background-color); color: var(--text-primary); margin-bottom: 0.5rem;">
+                            <option value="feet">Feet</option>
+                            <option value="meters">Meters</option>
+                            <option value="inches">Inches</option>
+                            <option value="kilometers">Kilometers</option>
+                            <option value="miles">Miles</option>
+                            <option value="yards">Yards</option>
+                            <option value="centimeters">Centimeters</option>
+                            <option value="millimeters">Millimeters</option>
+                        </select>
+                        <div style="height: 3rem; display: flex; align-items: center; padding: 0.75rem; background: var(--surface-color); border-radius: 0.5rem; border: 2px solid var(--border-color);">
+                            <span id="resultDisplay" style="font-size: 1.1rem; font-weight: 600; color: var(--primary-color);">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Actions -->
+                <div class="result-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn" id="copyResult" style="background: var(--surface-color); color: var(--text-primary); border: 2px solid var(--border-color);">📋 Copy</button>
+                    <button class="btn" id="favoriteBtn" style="background: var(--surface-color); color: var(--text-primary); border: 2px solid var(--border-color);">⭐ Favorite</button>
+                    <button class="btn" onclick="initiateUpgrade()" style="background: var(--surface-color); color: var(--text-primary); border: 2px solid var(--border-color);">📤 Export (Pro)</button>
                 </div>
             </div>
         </div>
@@ -777,7 +869,7 @@
                 </div>
             </div>
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="#upgrade" class="btn btn-primary" title="Professional Unit Converter Features">See All Pro Features →</a> | <a href="#converter" style="color: var(--primary-color); text-decoration: none; margin-left: 1rem;" title="Free Unit Converter">Try Free Converter</a>
+                <button onclick="initiateUpgrade()" class="btn btn-primary" title="Professional Unit Converter Features">See All Pro Features →</button> | <a href="#converter" style="color: var(--primary-color); text-decoration: none; margin-left: 1rem;" title="Free Unit Converter">Try Free Converter</a>
             </div>
         </div>
     </section>
@@ -812,9 +904,9 @@
                     <p>Offline mode + privacy-first guarantee</p>
                 </div>
             </div>
-            <a href="#" class="btn" style="background: white; color: var(--primary-color); font-size: 1.1rem; padding: 1rem 2rem;" onclick="showPaymentModal()">
+            <button class="btn" style="background: white; color: var(--primary-color); font-size: 1.1rem; padding: 1rem 2rem; border: none; border-radius: 0.5rem; cursor: pointer;" onclick="initiateUpgrade()">
                 Upgrade for $4.99/month →
-            </a>
+            </button>
         </div>
     </section>
 
@@ -860,7 +952,7 @@
             </p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
                 <a href="#converter" class="btn btn-primary" title="Free Unit Converter Calculator">Try Free Now</a>
-                <a href="#upgrade" class="btn btn-secondary" title="Professional Measurement Converter">Upgrade to Pro →</a>
+                <button onclick="initiateUpgrade()" class="btn btn-secondary" title="Professional Measurement Converter">Upgrade to Pro →</button>
             </div>
         </div>
     </section>
@@ -883,97 +975,6 @@
         </div>
     </footer>
 
-    <!-- Converter Section -->
-    <section id="converter" class="converter-section" style="display: block; padding: 4rem 0; background: var(--surface-color);">
-        <div class="container">
-            <div class="converter-card" style="background: var(--background-color); padding: 3rem; border-radius: 1.5rem; box-shadow: var(--shadow-lg); max-width: 1000px; margin: 0 auto;">
-                <div class="converter-header" style="text-align: center; margin-bottom: 2rem;">
-                    <div class="precision-badge" style="display: inline-flex; align-items: center; background: var(--primary-color); color: white; padding: 0.5rem 1rem; border-radius: 2rem; margin-bottom: 1rem;">
-                        <span class="precision-icon" style="margin-right: 0.5rem;">⚡</span>
-                        <span class="precision-text">PRECISION GRADE</span>
-                    </div>
-                    <h2 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 2rem;">Professional Unit Converter</h2>
-                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Precision calculations trusted by engineers and scientists worldwide</p>
-                </div>
-
-                <!-- Categories -->
-                <div class="categories" id="categories" style="margin-bottom: 2rem;">
-                    <div class="category-section basic-categories" style="margin-bottom: 2rem;">
-                        <div class="category-section-label" style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">BASIC CONVERSIONS</div>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                            <button class="category-btn active" data-category="length" style="padding: 0.5rem 1rem; border: 2px solid var(--primary-color); background: var(--primary-color); color: white; border-radius: 0.5rem; cursor: pointer; transition: var(--transition);">📏 Length</button>
-                            <button class="category-btn" data-category="weight" style="padding: 0.5rem 1rem; border: 2px solid var(--border-color); background: transparent; color: var(--text-primary); border-radius: 0.5rem; cursor: pointer; transition: var(--transition);">⚖️ Weight</button>
-                            <button class="category-btn" data-category="temperature" style="padding: 0.5rem 1rem; border: 2px solid var(--border-color); background: transparent; color: var(--text-primary); border-radius: 0.5rem; cursor: pointer; transition: var(--transition);">🌡️ Temperature</button>
-                            <button class="category-btn" data-category="volume" style="padding: 0.5rem 1rem; border: 2px solid var(--border-color); background: transparent; color: var(--text-primary); border-radius: 0.5rem; cursor: pointer; transition: var(--transition);">🫗 Volume</button>
-                            <button class="category-btn" data-category="area" style="padding: 0.5rem 1rem; border: 2px solid var(--border-color); background: transparent; color: var(--text-primary); border-radius: 0.5rem; cursor: pointer; transition: var(--transition);">📐 Area</button>
-                            <button class="category-btn" data-category="time" style="padding: 0.5rem 1rem; border: 2px solid var(--border-color); background: transparent; color: var(--text-primary); border-radius: 0.5rem; cursor: pointer; transition: var(--transition);">⏰ Time</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Precision Controls -->
-                <div class="precision-controls" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
-                    <label for="precision" style="color: var(--text-primary);">Decimal Places:</label>
-                    <select id="precision" class="select-field" style="padding: 0.5rem; border: 2px solid var(--border-color); border-radius: 0.5rem; background: var(--background-color); color: var(--text-primary);">
-                        <option value="2">2 places ✅ FREE</option>
-                        <option value="4">4 places 💎 PRO</option>
-                        <option value="8">8 places 💎 PRO</option>
-                        <option value="15">15 places 💎 PRO</option>
-                    </select>
-                    <button class="btn btn-primary" onclick="showPaymentModal()" style="font-size: 0.9rem;">🔓 Unlock Pro</button>
-                    <label style="display: flex; align-items: center; color: var(--text-primary);">
-                        <input type="checkbox" id="scientificNotation" style="margin-right: 0.5rem;"> 🔬 Scientific Notation
-                    </label>
-                </div>
-
-                <!-- Converter Grid -->
-                <div class="converter-grid" style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: end; margin-bottom: 2rem;">
-                    <div class="input-group">
-                        <label for="fromUnit" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">From</label>
-                        <select id="fromUnit" class="select-field" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 0.5rem; background: var(--background-color); color: var(--text-primary); margin-bottom: 0.5rem;">
-                            <option value="meters">Meters</option>
-                            <option value="feet">Feet</option>
-                            <option value="inches">Inches</option>
-                            <option value="kilometers">Kilometers</option>
-                            <option value="miles">Miles</option>
-                            <option value="yards">Yards</option>
-                            <option value="centimeters">Centimeters</option>
-                            <option value="millimeters">Millimeters</option>
-                        </select>
-                        <input type="number" id="inputValue" class="input-field" placeholder="Enter value" step="any" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 0.5rem; background: var(--background-color); color: var(--text-primary);">
-                    </div>
-                    
-                    <button class="swap-btn" id="swapBtn" style="padding: 0.75rem; background: var(--accent-color); color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-size: 1.2rem; transition: var(--transition);">
-                        ⇄
-                    </button>
-                    
-                    <div class="input-group">
-                        <label for="toUnit" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">To</label>
-                        <select id="toUnit" class="select-field" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 0.5rem; background: var(--background-color); color: var(--text-primary); margin-bottom: 0.5rem;">
-                            <option value="feet">Feet</option>
-                            <option value="meters">Meters</option>
-                            <option value="inches">Inches</option>
-                            <option value="kilometers">Kilometers</option>
-                            <option value="miles">Miles</option>
-                            <option value="yards">Yards</option>
-                            <option value="centimeters">Centimeters</option>
-                            <option value="millimeters">Millimeters</option>
-                        </select>
-                        <div style="height: 3rem; display: flex; align-items: center; padding: 0.75rem; background: var(--surface-color); border-radius: 0.5rem; border: 2px solid var(--border-color);">
-                            <span id="resultDisplay" style="font-size: 1.1rem; font-weight: 600; color: var(--primary-color);">0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Result Actions -->
-                <div class="result-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn" id="copyResult" style="background: var(--surface-color); color: var(--text-primary); border: 2px solid var(--border-color);">📋 Copy</button>
-                    <button class="btn" id="favoriteBtn" style="background: var(--surface-color); color: var(--text-primary); border: 2px solid var(--border-color);">⭐ Favorite</button>
-                    <button class="btn" onclick="showPaymentModal()" style="background: var(--surface-color); color: var(--text-primary); border: 2px solid var(--border-color);">📤 Export (Pro)</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- All existing modals and JavaScript functionality preserved below -->
     
@@ -1102,7 +1103,7 @@
             });
 
             // Analytics tracking for CTA clicks
-            document.querySelectorAll('a[href="#upgrade"]').forEach(link => {
+            document.querySelectorAll('button[onclick*="initiateUpgrade"]').forEach(link => {
                 link.addEventListener('click', (e) => {
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'click', {
@@ -1266,15 +1267,32 @@
         }
 
         // Modal functions
-        function showPaymentModal() {
+        // FIXED STRIPE INTEGRATION - WORKING NOW
+        const stripe = Stripe('pk_live_51RvJPcPQdMywmVkHrXA1zCAXaHt8RUVIaaaThycEmR9jaM3F5nxr7b8QKzNGiCFJ8AzqgZGRUGO4xB9TqwMLRsJA00bJm5g3BV');
+
+        function initiateUpgrade() {
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'click', {
                     event_category: 'Upgrade',
-                    event_label: 'Payment Modal',
-                    value: 1
+                    event_label: 'Stripe Checkout',
+                    value: 4.99
                 });
             }
-            alert('🚀 Upgrade to Professional\n\n✅ 15-decimal precision\n✅ Specialized unit categories\n✅ Batch conversion & CSV export\n✅ Custom units builder\n✅ Professional themes\n✅ Offline mode\n\nOnly $4.99/month\n\nThis would open the Stripe payment modal in the production version.');
+            
+            stripe.redirectToCheckout({
+                lineItems: [{
+                    price: 'price_1QRvLePQdMywmVkH5rjK9ojL',
+                    quantity: 1,
+                }],
+                mode: 'subscription',
+                successUrl: window.location.origin + '/success.html',
+                cancelUrl: window.location.origin,
+            });
+        }
+
+        // Legacy function name for compatibility
+        function showPaymentModal() {
+            initiateUpgrade();
         }
 
         function showSupportModal() {
