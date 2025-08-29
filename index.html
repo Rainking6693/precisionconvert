@@ -51,11 +51,9 @@
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📏</text></svg>">
     
     <!-- Enhanced Performance Optimization -->
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="//www.googletagmanager.com">
     <link rel="preconnect" href="https://js.stripe.com">
-    <link rel="dns-prefetch" href="//js.stripe.com">
-    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://buy.stripe.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#2563eb">
     <meta name="color-scheme" content="light dark">
@@ -172,16 +170,22 @@
     }
     </script>
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C3B4BYJJHK"></script>
+    <!-- Google Analytics - Deferred Loading -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-C3B4BYJJHK', {
-        anonymize_ip: true,
-        cookie_flags: 'SameSite=Strict;Secure'
-      });
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-C3B4BYJJHK';
+        document.head.appendChild(script);
+        script.onload = function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-C3B4BYJJHK');
+        };
+      }, 3000);
+    });
     </script>
 
     <style>
@@ -668,7 +672,7 @@
                 <div class="nav-controls">
                     <a href="blog.html" class="btn btn-secondary" title="Unit Converter Blog">Blog</a>
                     <a href="#converter" class="btn btn-secondary" title="Free Unit Converter Tool">Try Free Now</a>
-                    <button onclick="window.open('https://buy.stripe.com/4gMdRbb4c9Ag9HM6lt7Vm09', '_blank')" style="background: #4F46E5; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;">Upgrade to Pro →</button>
+                    <button onclick="initiateUpgrade()" style="background: #4F46E5; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;">Upgrade to Pro →</button>
                 </div>
             </div>
         </div>
@@ -685,7 +689,7 @@
                 </p>
                 <div class="hero-cta">
                     <a href="#converter" class="btn btn-hero-primary" title="Start Converting Units Now">Try Free Now</a>
-                    <button onclick="window.open('https://buy.stripe.com/4gMdRbb4c9Ag9HM6lt7Vm09', '_blank')" style="background: #4F46E5; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;">Upgrade to Pro →</button>
+                    <button onclick="initiateUpgrade()" style="background: #4F46E5; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;">Upgrade to Pro →</button>
                 </div>
             </div>
         </div>
@@ -728,7 +732,7 @@
                         <option value="8">8 places 💎 PRO</option>
                         <option value="15">15 places 💎 PRO</option>
                     </select>
-                    <button onclick="window.open('https://buy.stripe.com/4gMdRbb4c9Ag9HM6lt7Vm09', '_blank')" style="background: #4F46E5; color: white; padding: 8px 16px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; font-size: 0.9rem;">🔓 Unlock Pro</button>
+                    <button onclick="initiateUpgrade()" style="background: #4F46E5; color: white; padding: 8px 16px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; font-size: 0.9rem;">🔓 Unlock Pro</button>
                     <label style="display: flex; align-items: center; color: var(--text-primary);">
                         <input type="checkbox" id="scientificNotation" style="margin-right: 0.5rem;"> 🔬 Scientific Notation
                     </label>
@@ -777,7 +781,7 @@
                 <div class="result-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <button class="btn" id="copyResult" style="background: var(--surface-color); color: var(--text-primary); border: 2px solid var(--border-color);">📋 Copy</button>
                     <button class="btn" id="favoriteBtn" style="background: var(--surface-color); color: var(--text-primary); border: 2px solid var(--border-color);">⭐ Favorite</button>
-                    <button onclick="window.open('https://buy.stripe.com/4gMdRbb4c9Ag9HM6lt7Vm09', '_blank')" style="background: #4F46E5; color: white; padding: 8px 16px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">📤 Export (Pro)</button>
+                    <button onclick="initiateUpgrade()" style="background: #4F46E5; color: white; padding: 8px 16px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">📤 Export (Pro)</button>
                 </div>
             </div>
         </div>
@@ -935,7 +939,7 @@
                     <p>Offline mode + privacy-first guarantee</p>
                 </div>
             </div>
-            <button onclick="window.open('https://buy.stripe.com/4gMdRbb4c9Ag9HM6lt7Vm09', '_blank')" style="background: #4F46E5; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;">Upgrade for $4.99/month →</button>
+            <button onclick="initiateUpgrade()" style="background: #4F46E5; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;">Upgrade for $4.99/month →</button>
         </div>
     </section>
 
@@ -1062,7 +1066,7 @@
                 </div>
                 <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
                     <p style="color: var(--text-secondary); margin-bottom: 1rem;">Only <strong style="color: var(--primary-color);">$4.99/month</strong> • Cancel anytime</p>
-                    <button onclick="window.open('https://buy.stripe.com/4gMdRbb4c9Ag9HM6lt7Vm09', '_blank')" style="background: var(--primary-color); color: white; padding: 1rem 2rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer; font-size: 1.1rem; width: 100%; max-width: 300px;">Upgrade to Pro →</button>
+                    <button onclick="initiateUpgrade()" style="background: var(--primary-color); color: white; padding: 1rem 2rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer; font-size: 1.1rem; width: 100%; max-width: 300px;">Upgrade to Pro →</button>
                 </div>
             </div>
         </div>
@@ -1253,6 +1257,16 @@
         }
 
         // Convert function
+        async function initiateUpgrade() {
+            if (!window.Stripe) {
+                const script = document.createElement('script');
+                script.src = 'https://js.stripe.com/v3/';
+                document.head.appendChild(script);
+                await new Promise(resolve => script.onload = resolve);
+            }
+            window.open('https://buy.stripe.com/4gMdRbb4c9Ag9HM6lt7Vm09', '_blank');
+        }
+
         function convert() {
             const value = parseFloat(elements.inputValue.value) || 0;
             const fromUnit = elements.fromUnit.value;
