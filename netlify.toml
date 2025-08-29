@@ -29,6 +29,22 @@
   to = "/cooking-unit-converter.html"
   status = 200
 
+# New blog post redirects (markdown to HTML pages)
+[[redirects]]
+  from = "/blog/convert-ancient-units-accurately"
+  to = "/blog.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/batch-unit-conversion-save-hours"
+  to = "/blog.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/custom-unit-converter-build-save-share"
+  to = "/blog.html"
+  status = 200
+
 # API redirects
 [[redirects]]
   from = "/api/*"
