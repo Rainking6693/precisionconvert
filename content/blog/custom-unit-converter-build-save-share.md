@@ -215,7 +215,7 @@ Design professionals require consistent measurement systems across different des
 
 ### Custom Converter Development Tools
 
-The [Custom Unit Converter](/custom-unit-converter) provides developer-friendly features for building specialized measurement applications:
+The [Custom Unit Converter](/index.html#converter) provides developer-friendly features for building specialized measurement applications:
 
 **Formula Builder Interface**
 - Visual formula construction for complex conversions
@@ -374,11 +374,11 @@ Custom unit conversion represents more than simple calculation automation—it's
 
 Whether you're developing software applications, managing engineering projects, or conducting scientific research, the ability to create, save, and share custom unit conversions can transform your workflow efficiency and accuracy.
 
-The [Custom Unit Converter](/custom-unit-converter) provides the professional-grade platform necessary for building, managing, and sharing specialized measurement conversions. With advanced mathematical capabilities, team collaboration features, and enterprise integration options, it's the tool professionals choose for specialized measurement requirements.
+The [Custom Unit Converter](/index.html#converter) provides the professional-grade platform necessary for building, managing, and sharing specialized measurement conversions. With advanced mathematical capabilities, team collaboration features, and enterprise integration options, it's the tool professionals choose for specialized measurement requirements.
 
 Don't let standard measurement limitations constrain your professional capabilities. Join the growing community of professionals who've discovered the competitive advantage of custom unit conversion.
 
-Create your first custom unit conversion today with our [Custom Unit Converter](/custom-unit-converter) and experience the precision and efficiency that comes from tools designed specifically for your professional requirements. Trust the [Professional Unit Converter](/) that understands your industry's unique measurement needs.
+Create your first custom unit conversion today with our [Custom Unit Converter](/index.html#converter) and experience the precision and efficiency that comes from tools designed specifically for your professional requirements. Trust the [Professional Unit Converter](/) that understands your industry's unique measurement needs.
 
 <script type="application/ld+json">
 {

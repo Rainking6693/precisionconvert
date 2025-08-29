@@ -1,0 +1,16 @@
+Placeholder OG Images Directory
+
+The following images should be created for the blog posts:
+
+1. historical-units.png - For "From Cubits to Kilometers: How to Convert Ancient Units Accurately"
+2. batch-convert.png - For "Batch Unit Conversion: How Professionals Save Hours Every Week"
+3. custom-units.png - For "Custom Unit Converter: Build, Save, and Share Your Own Units"
+
+Recommended dimensions: 1200x630 pixels (Facebook/Twitter standard)
+
+Additional OG images referenced in existing HTML files:
+4. scientific-converter-og.png
+5. cooking-converter-og.png
+6. blog-og-image.png
+
+These should be professionally designed images that represent the content of each blog post.
