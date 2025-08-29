@@ -398,6 +398,6 @@ Start transforming your workflow efficiency today with our [Batch Unit Converter
   "datePublished": "2025-08-29",
   "author": { "@type": "Person", "name": "PrecisionConvert.io" },
   "publisher": { "@type": "Organization", "name": "PrecisionConvert.io" },
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://precisionconvert.io/blog/batch-unit-conversion-save-hours" }
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://precisionconvert.io/batch-unit-conversion-save-hours" }
 }
 </script>

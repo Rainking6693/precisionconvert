@@ -389,6 +389,6 @@ Create your first custom unit conversion today with our [Custom Unit Converter](
   "datePublished": "2025-08-29",
   "author": { "@type": "Person", "name": "PrecisionConvert.io" },
   "publisher": { "@type": "Organization", "name": "PrecisionConvert.io" },
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://precisionconvert.io/blog/custom-unit-converter-build-save-share" }
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://precisionconvert.io/custom-unit-converter-build-save-share" }
 }
 </script>

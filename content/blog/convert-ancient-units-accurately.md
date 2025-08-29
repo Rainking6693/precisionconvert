@@ -293,6 +293,6 @@ Start converting ancient units with professional precision today using our [Hist
   "datePublished": "2025-08-29",
   "author": { "@type": "Person", "name": "PrecisionConvert.io" },
   "publisher": { "@type": "Organization", "name": "PrecisionConvert.io" },
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://precisionconvert.io/blog/convert-ancient-units-accurately" }
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://precisionconvert.io/convert-ancient-units-accurately" }
 }
 </script>
