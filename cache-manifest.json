@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "timestamp": "2025-08-29T19:06:25.158Z",
+  "files": [
+    {
+      "url": "/index.html",
+      "revision": "f91ce84e"
+    },
+    {
+      "url": "/blog.html",
+      "revision": "668e64ac"
+    },
+    {
+      "url": "/scientific-unit-converter.html",
+      "revision": "94649a9f"
+    },
+    {
+      "url": "/cooking-unit-converter.html",
+      "revision": "4036dc33"
+    },
+    {
+      "url": "/batch-unit-conversion-save-hours.html",
+      "revision": "19c70b0b"
+    },
+    {
+      "url": "/convert-ancient-units-accurately.html",
+      "revision": "7a2a6028"
+    },
+    {
+      "url": "/custom-unit-converter-build-save-share.html",
+      "revision": "15fdbaae"
+    },
+    {
+      "url": "/blog-analytics.js",
+      "revision": "9a990013"
+    }
+  ]
+}
