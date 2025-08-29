@@ -29,21 +29,37 @@
   to = "/cooking-unit-converter.html"
   status = 200
 
-# New blog post redirects (markdown to HTML pages)
+# Individual blog post redirects (clean URLs to HTML files)
+[[redirects]]
+  from = "/convert-ancient-units-accurately"
+  to = "/convert-ancient-units-accurately.html"
+  status = 200
+
+[[redirects]]
+  from = "/batch-unit-conversion-save-hours"
+  to = "/batch-unit-conversion-save-hours.html"
+  status = 200
+
+[[redirects]]
+  from = "/custom-unit-converter-build-save-share"
+  to = "/custom-unit-converter-build-save-share.html"
+  status = 200
+
+# Alternative blog URL patterns
 [[redirects]]
   from = "/blog/convert-ancient-units-accurately"
-  to = "/blog.html"
-  status = 200
+  to = "/convert-ancient-units-accurately.html"
+  status = 301
 
 [[redirects]]
   from = "/blog/batch-unit-conversion-save-hours"
-  to = "/blog.html"
-  status = 200
+  to = "/batch-unit-conversion-save-hours.html"
+  status = 301
 
 [[redirects]]
   from = "/blog/custom-unit-converter-build-save-share"
-  to = "/blog.html"
-  status = 200
+  to = "/custom-unit-converter-build-save-share.html"
+  status = 301
 
 # API redirects
 [[redirects]]
@@ -150,6 +166,30 @@
     X-Content-Type = "text/html; charset=utf-8"
     X-Page-Type = "blog-article"
     X-Article-Category = "cooking"
+
+[[headers]]
+  for = "/batch-unit-conversion-save-hours.html"
+  [headers.values]
+    Cache-Control = "public, max-age=7200, must-revalidate"
+    X-Content-Type = "text/html; charset=utf-8"
+    X-Page-Type = "blog-article"
+    X-Article-Category = "productivity"
+
+[[headers]]
+  for = "/convert-ancient-units-accurately.html"
+  [headers.values]
+    Cache-Control = "public, max-age=7200, must-revalidate"
+    X-Content-Type = "text/html; charset=utf-8"
+    X-Page-Type = "blog-article"
+    X-Article-Category = "historical"
+
+[[headers]]
+  for = "/custom-unit-converter-build-save-share.html"
+  [headers.values]
+    Cache-Control = "public, max-age=7200, must-revalidate"
+    X-Content-Type = "text/html; charset=utf-8"
+    X-Page-Type = "blog-article"
+    X-Article-Category = "development"
 
 # Static assets - Long-term caching
 [[headers]]

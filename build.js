@@ -13,7 +13,10 @@ const CONFIG = {
         'index.html',
         'blog.html', 
         'scientific-unit-converter.html',
-        'cooking-unit-converter.html'
+        'cooking-unit-converter.html',
+        'batch-unit-conversion-save-hours.html',
+        'convert-ancient-units-accurately.html',
+        'custom-unit-converter-build-save-share.html'
     ],
     jsFiles: [
         'blog-analytics.js',
@@ -180,6 +183,9 @@ async function generateCacheManifest() {
         'blog.html',
         'scientific-unit-converter.html', 
         'cooking-unit-converter.html',
+        'batch-unit-conversion-save-hours.html',
+        'convert-ancient-units-accurately.html',
+        'custom-unit-converter-build-save-share.html',
         'blog-analytics.js'
     ];
     
@@ -237,10 +243,19 @@ function optimizeBlogMetaTags(content, fileName) {
     <meta property="article:author" content="PrecisionConvert.io">
     <meta property="article:section" content="Unit Conversion Guides">`;
         
-        content = content.replace(
-            '</head>',
-            articleSchema + '\n</head>'
-        );
+        // Only add if not already present
+        if (!content.includes('<!-- Article Schema -->')) {
+            content = content.replace(
+                '</head>',
+                articleSchema + '\n</head>'
+            );
+        } else {
+            // Update existing article modified time
+            content = content.replace(
+                /<meta property="article:modified_time" content="[^"]*">/,
+                `<meta property="article:modified_time" content="${CONFIG.buildInfo.timestamp}">`
+            );
+        }
     }
     
     return content;
