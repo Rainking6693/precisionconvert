@@ -1,179 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-  
-  <!-- Main Application Page -->
+<!-- PrecisionConvert.io: page-only sitemap (no <image:image> entries) -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core pages -->
   <url>
     <loc>https://precisionconvert.io/</loc>
-    <lastmod>2025-08-29</lastmod>
+    <lastmod>2025-08-29T00:00:00Z</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <priority>1.00</priority>
   </url>
-  
-  <!-- Blog Index Page -->
-  <url>
-    <loc>https://precisionconvert.io/blog.html</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://precisionconvert.io/blog-og-image.png</image:loc>
-      <image:title>Unit Conversion Blog - Expert Guides & Tips</image:title>
-      <image:caption>Professional unit conversion guides for engineers, scientists, and chefs</image:caption>
-    </image:image>
-  </url>
-  
-  <!-- Clean URL for Blog Index -->
   <url>
     <loc>https://precisionconvert.io/blog</loc>
-    <lastmod>2025-08-29</lastmod>
+    <lastmod>2025-08-29T00:00:00Z</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.80</priority>
   </url>
-  
-  <!-- Scientific Unit Converter Guide -->
-  <url>
-    <loc>https://precisionconvert.io/scientific-unit-converter.html</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://precisionconvert.io/scientific-converter-og.png</image:loc>
-      <image:title>Scientific Unit Converter Guide</image:title>
-      <image:caption>Complete guide for engineers and scientists - SI units, precision calculations</image:caption>
-    </image:image>
-  </url>
-  
-  <!-- Clean URL for Scientific Guide -->
+
+  <!-- Pillar/guide pages (known live) -->
   <url>
     <loc>https://precisionconvert.io/scientific-unit-converter</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-08-29T00:00:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
   </url>
-  
-  <!-- Cooking Unit Converter Guide -->
-  <url>
-    <loc>https://precisionconvert.io/cooking-unit-converter.html</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://precisionconvert.io/cooking-converter-og.png</image:loc>
-      <image:title>Cooking Unit Converter Guide</image:title>
-      <image:caption>Professional recipe conversion guide - cups to grams, recipe scaling</image:caption>
-    </image:image>
-  </url>
-  
-  <!-- Clean URL for Cooking Guide -->
+
+  <!-- Blog posts (known live) -->
   <url>
     <loc>https://precisionconvert.io/cooking-unit-converter</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Alternative URLs for SEO -->
-  <url>
-    <loc>https://precisionconvert.io/guides</loc>
-    <lastmod>2025-08-29</lastmod>
+    <lastmod>2025-08-29T00:00:00Z</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.70</priority>
   </url>
-  
-  <url>
-    <loc>https://precisionconvert.io/scientific</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://precisionconvert.io/engineering</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://precisionconvert.io/cooking</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://precisionconvert.io/recipe</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://precisionconvert.io/baking</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Individual Blog Posts (Primary URLs) -->
   <url>
     <loc>https://precisionconvert.io/batch-unit-conversion-save-hours</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://precisionconvert.io/og-images/batch-convert.png</image:loc>
-      <image:title>Batch Unit Conversion Guide</image:title>
-      <image:caption>How professionals save hours with batch unit conversion and CSV export</image:caption>
-    </image:image>
+    <lastmod>2025-08-29T00:00:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
   </url>
-  
   <url>
     <loc>https://precisionconvert.io/convert-ancient-units-accurately</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://precisionconvert.io/og-images/historical-units.png</image:loc>
-      <image:title>Ancient Units Conversion Guide</image:title>
-      <image:caption>Convert ancient units like cubits and Roman miles with 15-decimal accuracy</image:caption>
-    </image:image>
+    <lastmod>2025-08-29T00:00:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
   </url>
-  
   <url>
     <loc>https://precisionconvert.io/custom-unit-converter-build-save-share</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://precisionconvert.io/og-images/custom-units.png</image:loc>
-      <image:title>Custom Unit Converter Guide</image:title>
-      <image:caption>Build, save, and share custom unit conversions for niche industries</image:caption>
-    </image:image>
+    <lastmod>2025-08-29T00:00:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
   </url>
-  
-  <!-- HTML File URLs -->
-  <url>
-    <loc>https://precisionconvert.io/batch-unit-conversion-save-hours.html</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://precisionconvert.io/convert-ancient-units-accurately.html</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://precisionconvert.io/custom-unit-converter-build-save-share.html</loc>
-    <lastmod>2025-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
 </urlset>
