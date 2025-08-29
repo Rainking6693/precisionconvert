@@ -117,4 +117,26 @@
     <priority>0.7</priority>
   </url>
   
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://precisionconvert.io/blog/convert-ancient-units-accurately</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://precisionconvert.io/blog/batch-unit-conversion-save-hours</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://precisionconvert.io/blog/custom-unit-converter-build-save-share</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
 </urlset>
