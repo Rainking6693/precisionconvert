@@ -391,6 +391,12 @@ For everyday conversions with the same precision standard, use the **[Profession
 
 Start transforming your workflow efficiency today with our [Batch Unit Converter](/index.html#converter)—and discover why leading professionals choose automated precision over manual calculation.
 
+<div style="text-align: center; margin: 2em 0; padding: 1.5em; background: #f8f9fa; border-radius: 8px;">
+  <h3>Ready to upgrade to professional-grade batch conversion?</h3>
+  <p>Access unlimited batch processing, advanced CSV features, and premium precision tools.</p>
+  <a href="https://buy.stripe.com/4gMdRbb4c9Ag9HM6lt7Vm09" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 12px 24px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Upgrade to Pro →</a>
+</div>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
