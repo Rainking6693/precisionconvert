@@ -128,7 +128,7 @@
   for = "/*.html"
   [headers.values]
     # Security Headers
-    Content-Security-Policy = "default-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://connect.facebook.net; connect-src 'self' https://api.stripe.com https://www.google-analytics.com https://analytics.google.com; frame-src https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';"
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://buy.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://connect.facebook.net; connect-src 'self' https://api.stripe.com https://buy.stripe.com https://www.google-analytics.com https://analytics.google.com; frame-src https://js.stripe.com https://buy.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; object-src 'none'; base-uri 'self'; form-action 'self' https://buy.stripe.com; frame-ancestors 'none';"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
