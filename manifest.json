@@ -1,0 +1,105 @@
+{
+  "name": "PrecisionConvert.io - Professional Unit Converter",
+  "short_name": "PrecisionConvert",
+  "description": "Professional-grade unit converter with 15-decimal precision for engineers, scientists, and professionals",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2563eb",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["utilities", "productivity", "education"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' fill='%232563eb'/><text x='96' y='130' font-size='100' text-anchor='middle' fill='white'>📏</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%232563eb'/><text x='256' y='340' font-size='280' text-anchor='middle' fill='white'>📏</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1280 720'><rect width='1280' height='720' fill='%23f8fafc'/><rect x='40' y='40' width='1200' height='640' fill='white' stroke='%23e2e8f0' stroke-width='2' rx='12'/><text x='640' y='100' font-size='32' text-anchor='middle' fill='%232563eb' font-weight='bold'>PrecisionConvert.io</text><text x='640' y='140' font-size='18' text-anchor='middle' fill='%2364748b'>Professional Unit Converter</text><rect x='200' y='200' width='880' height='400' fill='%23f8fafc' stroke='%23e2e8f0' stroke-width='1' rx='8'/><text x='640' y='240' font-size='16' text-anchor='middle' fill='%23475569'>15-Decimal Precision • 1000+ Units • Offline Capable</text></svg>",
+      "sizes": "1280x720",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "PrecisionConvert.io Desktop View"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 844'><rect width='390' height='844' fill='%23f8fafc'/><rect x='20' y='20' width='350' height='804' fill='white' stroke='%23e2e8f0' stroke-width='2' rx='12'/><text x='195' y='80' font-size='20' text-anchor='middle' fill='%232563eb' font-weight='bold'>PrecisionConvert</text><text x='195' y='110' font-size='12' text-anchor='middle' fill='%2364748b'>Professional Grade</text><rect x='40' y='140' width='310' height='600' fill='%23f8fafc' stroke='%23e2e8f0' stroke-width='1' rx='8'/><text x='195' y='180' font-size='14' text-anchor='middle' fill='%23475569'>Mobile Optimized Interface</text></svg>",
+      "sizes": "390x844",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "PrecisionConvert.io Mobile View"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Length Converter",
+      "short_name": "Length",
+      "description": "Convert length units with precision",
+      "url": "/?category=length",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect width='96' height='96' fill='%232563eb'/><text x='48' y='65' font-size='50' text-anchor='middle' fill='white'>📏</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Weight Converter",
+      "short_name": "Weight",
+      "description": "Convert weight units with precision",
+      "url": "/?category=weight",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect width='96' height='96' fill='%232563eb'/><text x='48' y='65' font-size='50' text-anchor='middle' fill='white'>⚖️</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Temperature Converter",
+      "short_name": "Temperature",
+      "description": "Convert temperature units with precision",
+      "url": "/?category=temperature",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect width='96' height='96' fill='%232563eb'/><text x='48' y='65' font-size='50' text-anchor='middle' fill='white'>🌡️</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Volume Converter",
+      "short_name": "Volume",
+      "description": "Convert volume units with precision",
+      "url": "/?category=volume",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect width='96' height='96' fill='%232563eb'/><text x='48' y='65' font-size='50' text-anchor='middle' fill='white'>🫗</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}
