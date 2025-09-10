@@ -30,4 +30,4 @@ imports = [
     "agents/atlas.toml",
     "agents/blake.toml",
     "agents/hudson.toml",
-    "agents/cora.toml"
+    "agents/cora.toml"]
