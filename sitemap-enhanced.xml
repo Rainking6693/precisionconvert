@@ -18,6 +18,27 @@
   
   <!-- Tier 1: High-Volume Conversion Pages -->
   <url>
+    <loc>https://precisionconvert.io/kg-to-lbs-converter.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://precisionconvert.io/og-images/kg-to-lbs-converter.png</image:loc>
+      <image:title>Kg to Lbs Converter</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://precisionconvert.io/inches-to-cm-converter.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://precisionconvert.io/og-images/inches-to-cm-converter.png</image:loc>
+      <image:title>Inches to CM Converter</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://precisionconvert.io/meters-to-feet-converter.html</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -201,7 +222,29 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- UK/International Pages -->
+  <url>
+    <loc>https://precisionconvert.io/uk/stone-to-pounds-converter.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://precisionconvert.io/og-images/stone-to-pounds-converter-uk.png</image:loc>
+      <image:title>Stone to Pounds Converter UK</image:title>
+    </image:image>
+  </url>
+
   <!-- Tier 3: Educational/How-To Content -->
+  <url>
+    <loc>https://precisionconvert.io/how-to-convert-units-guide.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://precisionconvert.io/og-images/how-to-convert-units-guide.png</image:loc>
+      <image:title>How to Convert Units Guide</image:title>
+    </image:image>
+  </url>
   <url>
     <loc>https://precisionconvert.io/how-to-convert-metric-to-imperial-units.html</loc>
     <lastmod>2025-01-21</lastmod>
