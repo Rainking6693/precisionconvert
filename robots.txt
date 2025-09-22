@@ -1,1 +1,36 @@
-User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /private/\nDisallow: /*.json$\nDisallow: /sw.js\nDisallow: /CRITICAL_FIXES_IMPLEMENTATION.js\nDisallow: /MISSING_FEATURES_IMPLEMENTATION.js\n\n# Allow important pages\nAllow: /index.html\nAllow: /blog.html\nAllow: /scientific-unit-converter.html\nAllow: /cooking-unit-converter.html\nAllow: /manifest.json\n\n# Sitemap\nSitemap: https://precisionconvert.io/sitemap.xml\n\n# Crawl-delay for respectful crawling\nCrawl-delay: 1\n\n# Specific bot instructions\nUser-agent: Googlebot\nAllow: /\nCrawl-delay: 1\n\nUser-agent: Bingbot\nAllow: /\nCrawl-delay: 2
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /sw.js
+Disallow: /CRITICAL_FIXES_IMPLEMENTATION.js
+Disallow: /MISSING_FEATURES_IMPLEMENTATION.js
+
+# Allow important pages - FREE advanced features
+Allow: /index.html
+Allow: /blog.html
+Allow: /scientific-unit-converter.html
+Allow: /cooking-unit-converter.html
+Allow: /kg-to-lbs-converter-enhanced.html
+Allow: /meters-to-feet-converter-enhanced.html
+Allow: /manifest.json
+
+# Free converter landing pages
+Allow: /*converter*.html
+Allow: /*free*.html
+
+# Sitemap
+Sitemap: https://precisionconvert.io/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2

@@ -1,7 +1,7 @@
 {
-  "name": "PrecisionConvert.io - Professional Unit Converter",
-  "short_name": "PrecisionConvert",
-  "description": "Professional-grade unit converter with 15-decimal precision for engineers, scientists, and professionals",
+  "name": "Free Advanced Unit Converter - 15-Decimal Precision | PrecisionConvert.io",
+  "short_name": "Free Converter",
+  "description": "100% FREE professional unit converter with 15-decimal precision. Advanced features: batch conversion, custom units, scientific categories - no registration required!",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#2563eb",
