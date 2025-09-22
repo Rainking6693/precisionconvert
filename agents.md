@@ -2,8 +2,6 @@
 
 ## Project Structure & Module Organization
 
-DirectoryBolt follows a standard Next.js 14 structure with TypeScript. Source code is organized in `/pages` for Next.js pages and API routes, `/components` for React components grouped by feature (ai-portal, analytics, dashboard, etc.), `/lib` for utilities, database connections, AI services, and type definitions, and `/public` for static assets. The `/autobolt-extension` directory contains the Chrome extension code for automated submissions.
-
 ## Build, Test, and Development Commands
 
 ```bash
@@ -45,7 +43,7 @@ npm run test:ai-integration
 
 ## Commit & Pull Request Guidelines
 
-- **Commit format**: Descriptive messages focusing on feature/fix areas (e.g., "autobolt", "fixes", "updates")
+- **Commit format**: Descriptive messages focusing on feature/fix areas 
 - **PR process**: Team-based development with code review requirements
 - **Branch naming**: Feature branches with descriptive names
 
