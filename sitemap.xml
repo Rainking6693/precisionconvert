@@ -37,7 +37,7 @@
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://precisionconvert.io/og-images/conversion-guides.png</image:loc>
-      <image:title>Free Unit Conversion Guides - Expert Tips & Tutorials</image:title>
+      <image:title>Free Unit Conversion Guides - Expert Tips and Tutorials</image:title>
       <image:caption>Comprehensive free guides for professional unit conversion</image:caption>
     </image:image>
   </url>
@@ -94,6 +94,32 @@
     </image:image>
   </url>
   
+  <!-- Voice Search Optimized -->
+  <url>
+    <loc>https://precisionconvert.io/voice-search-conversions.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://precisionconvert.io/og-images/voice-search.png</image:loc>
+      <image:title>Voice Search Unit Conversions</image:title>
+      <image:caption>Optimized for Alexa, Google Assistant, and Siri</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Viral Social Content -->
+  <url>
+    <loc>https://precisionconvert.io/viral-conversion-facts.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://precisionconvert.io/og-images/viral-facts.png</image:loc>
+      <image:title>Mind-Blowing Unit Conversion Facts</image:title>
+      <image:caption>Viral content for TikTok, Instagram, and social media</image:caption>
+    </image:image>
+  </url>
+
   <!-- Enhanced Calculator Landing Pages (High Priority) -->
   <url>
     <loc>https://precisionconvert.io/kg-to-lbs-converter-enhanced.html</loc>
